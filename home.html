@@ -24,9 +24,8 @@
                 <ul class="navbar-nav mb-2 mb-lg-0">
 
                 </ul>
-                <form class="search-form d-flex" role="search">
-                    <input class="form-control me-2 search-bar" type="search" placeholder="Search"
-                        aria-label="Search" />
+                <form class="search-form d-flex w-100" role="search">
+                    <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" />
                 </form>
 
                 <div class="nav-btns d-none d-md-flex">
@@ -52,19 +51,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mobile-hamburger d-md-none">
+                <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
+                    <li><a class="dropdown-item" href="home.html">Home</a></li>
+                    <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!--Fim do header-->
 
-
-    <div class="body w-100 d-flex justify-content-center align-items-center">
-        <img src="/img/HomeBackground.png" class="position-relative w-100">
-        <img src="/img/HomeText.png" class="position-absolute end-0 HomeText">
+    <div class="body w-100 d-flex justify-content-center align-items-center position-relative">
+        <img src="/img/HomeBackground.png" class="w-100" alt="Fundo Home">
+        <img src="/img/HomeText.png" class="position-absolute end-0 HomeText" alt="Texto Home">
     </div>
 
-    <div class="container my-5">
+    <div class="objetivo ms-5 me-5 mt-5">
         <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start objetivo-son">
+            <div class="col-md-6 text-md-start objetivo-son">
                 <h1>Qual é o nosso objetivo?</h1>
                 <p>
                     O ForneX <span>CONECTA</span> lojistas a fornecedores confiáveis.
@@ -75,71 +82,68 @@
                 </p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="/img/handShake.png" class="img-fluid w-50" alt="Mãos dadas">
+                <img src="/img/aperto-de-mao-home.png" class="img-fluid w-75" alt="Mãos dadas">
             </div>
         </div>
     </div>
 
-
-    <div class="vantagens my-5">
+    <div class="vantagens py-4">
         <div class="row">
-            <div class="vtg-title col text-center">
+            <div class="col text-center vtg-title">
                 <h1>Nossas Vantagens</h1>
             </div>
         </div>
-        <div class="vtg-body row text-center">
-            <div class="vtg-content col-6 col-md-4 col-lg-2 ">
-                <img src="/img/abrangencia.png" class="w-50">
-                <h1>Abrangência</h1>
+        <div class="row justify-content-center text-center g-4">
+            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+                <img src="/img/abrangencia.png" class="w-50" alt="Abrangência">
+                <h2>Abrangência</h2>
                 <p>Fornecedores de todos os setores em todo o Brasil</p>
             </div>
-            <div class="vtg-content col-6 col-md-4 col-lg-2 ">
-                <img src="/img/orçamento.png" class="w-50">
-                <h1>Orçamento Rápido</h1>
+            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+                <img src="/img/orçamento.png" class="w-50" alt="Orçamento Rápido">
+                <h2>Orçamento Rápido</h2>
                 <p>Função exclusiva do nosso site</p>
             </div>
-            <div class="vtg-content col-6 col-md-4 col-lg-2 ">
-                <img src="/img/filtro.png" class="w-50">
-                <h1>Filtros Dinâmicos</h1>
+            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+                <img src="/img/filtro.png" class="w-50" alt="Filtros Dinâmicos">
+                <h2>Filtros Dinâmicos</h2>
                 <p>Para Tipo de Fornecedor, Localização e Avaliação</p>
             </div>
-            <div class="vtg-content col-6 col-md-4 col-lg-2 ">
-                <img src="/img/tempo.png" class="w-50">
-                <h1>Tempo Otimizado</h1>
+            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+                <img src="/img/tempo.png" class="w-50" alt="Tempo Otimizado">
+                <h2>Tempo Otimizado</h2>
                 <p>Nossa equipe está sempre pronta a ajudar!</p>
             </div>
-            <div class="vtg-content col-6 col-md-4 col-lg-2 ">
-                <img src="/img/vip.png" class="w-50">
-                <h1>Atendimento VIP</h1>
+            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+                <img src="/img/vip.png" class="w-50" alt="Atendimento VIP">
+                <h2>Atendimento VIP</h2>
                 <p>Projetos personalizados de pesquisas de fornecedores</p>
             </div>
         </div>
     </div>
 
-    <div class="objetivo w-100 d-flex">
-        <img src="">
-        <div class="OBJ-son w-50">
-            <h1>Qual é o nosso objetivo?</h1>
-            <p class="w-75">
-                O ForneX <span>CONECTA</span> lojistas a fornecedores confiáveis.
-                Permite <span>COMPARAR EMPRESAS</span>, preços e reputações de forma transparente. <span>FACILITA
-                    DECISÕES</span> estratégicas
-                para o <span>CRESCIMENTO SEGURO DO SEU NEGÓCIO</span>.
+    <div class="orçamento row">
+        <div class="col-md-6 col-lg-6">
+            <img src="/img/calculadora.png" class="orçamento-img img-fluid">
+        </div>
+        <div class="orçamento-text col-md-6 col-lg-6 text-center">
+            <h1>Como o orçamento rápido funciona</h1>
+            <p>Você, cliente, preenche um formulário instruindo as especificações do seu pedido e as empresas que deseja
+                contatar, que por sua vez analisam o que foi requisitado e respondem com sua oferta.
             </p>
         </div>
-
     </div>
+
+
 
     <footer class="site-footer py-3 my-4">
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+            <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>
     </footer>
 

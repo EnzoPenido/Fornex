@@ -28,9 +28,8 @@
                 <ul class="navbar-nav mb-2 mb-lg-0">
 
                 </ul>
-                <form class="search-form d-flex" role="search">
-                    <input class="form-control me-2 search-bar" type="search" placeholder="Search"
-                        aria-label="Search" />
+                <form class="search-form d-flex w-100" role="search">
+                    <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" />
                 </form>
 
                 <div class="nav-btns d-none d-md-flex">
@@ -56,6 +55,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mobile-hamburger d-md-none">
+                <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
+                    <li><a class="dropdown-item" href="home.html">Home</a></li>
+                    <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!--Fim do header-->
@@ -76,7 +84,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center pt-2">
                 <p class="fs-4 raleway-fonte">
                     A plataforma permite que lojistas encontrem fornecedores qualificados, comparem produtos e preços, e
                     realizem negociações confiáveis com informações precisas. Para os fornecedores, a ForneX oferece
@@ -93,12 +101,12 @@
         <div class="container pt-3">
             <div class="row justify-content-center py-5 gy-4">
                 <div class="col-lg-4">
-                    <div class="card-sobre p-4">
-                        <div class="card-titulo-sobre d-flex align-items-center mb-3">
+                    <div class="p-4">
+                        <div class="d-flex align-items-center mb-3">
                             <img src="img/missao-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Missão</h2>
                         </div>
-                        <div class="raleway-fonte card-conteudo-sobre fs-5">
+                        <div class="raleway-fonte fs-5">
                             Facilitar o acesso ao mercado, gerar oportunidades de negócios e fortalecer relações
                             comerciais,
                             garantindo que decisões estratégicas levem a resultados sólidos.
@@ -107,12 +115,12 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card-sobre p-4">
-                        <div class="card-titulo-sobre d-flex align-items-center mb-3">
+                    <div class="p-4">
+                        <div class=" d-flex align-items-center mb-3">
                             <img src="img/visao-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Visão</h2>
                         </div>
-                        <div class="raleway-fonte card-conteudo-sobre fs-5">
+                        <div class="raleway-fonte fs-5">
                             Ser referência nacional na conexão entre lojistas e fornecedores, reconhecida por
                             eficiência,
                             transparência e confiança.
@@ -121,12 +129,12 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card-sobre p-4">
-                        <div class="card-titulo-sobre d-flex align-items-center mb-3">
+                    <div class="p-4">
+                        <div class="d-flex align-items-center mb-3">
                             <img src="img/valores-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Valores</h2>
                         </div>
-                        <div class="card-conteudo-sobre raleway-fonte fs-5">
+                        <div class="raleway-fonte fs-5">
                             <ul>
                                 <li>Transparência</li>
                                 <li>Confiança</li>
@@ -144,13 +152,11 @@
     <footer class="site-footer py-3 my-4">
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+            <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>
     </footer>
 
