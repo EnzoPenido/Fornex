@@ -11,18 +11,22 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <img src="/img/logo.png" class="navbar-brand logo">
+            <a href="index.html" class="navbar-brand logo">
+                <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
@@ -40,7 +44,7 @@
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
-                            <li><a class="dropdown-item" href="home.html">Home</a></li>
+                            <li><a class="dropdown-item" href="index.html">Home</a></li>
                             <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
                         </ul>
                     </div>
@@ -50,7 +54,7 @@
                     <a href="#" class="d-block nav-mobile-link mb-2">Entrar</a>
                     <a href="#" class="d-block btn btn-cad-emp mb-2">Cadastrar Empresa</a>
                     <div class="mobile-links">
-                        <a class="d-block dropdown-item" href="home.html">Home</a>
+                        <a class="d-block dropdown-item" href="index.html">Home</a>
                         <a class="d-block dropdown-item" href="sobre.html">Sobre</a>
                     </div>
                 </div>
@@ -60,7 +64,7 @@
                 <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
-                    <li><a class="dropdown-item" href="home.html">Home</a></li>
+                    <li><a class="dropdown-item" href="index.html">Home</a></li>
                     <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
                 </ul>
             </div>
@@ -84,7 +88,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 d-flex align-items-center pt-2">
+            <div class="col-md-6 d-flex align-items-center">
                 <p class="fs-4 raleway-fonte">
                     A plataforma permite que lojistas encontrem fornecedores qualificados, comparem produtos e preços, e
                     realizem negociações confiáveis com informações precisas. Para os fornecedores, a ForneX oferece
@@ -101,12 +105,12 @@
         <div class="container pt-3">
             <div class="row justify-content-center py-5 gy-4">
                 <div class="col-lg-4">
-                    <div class="p-4">
+                    <div class="card-sobre p-4">
                         <div class="d-flex align-items-center mb-3">
                             <img src="img/missao-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Missão</h2>
                         </div>
-                        <div class="raleway-fonte fs-5">
+                        <div class="raleway-fonte card-conteudo-sobre fs-5">
                             Facilitar o acesso ao mercado, gerar oportunidades de negócios e fortalecer relações
                             comerciais,
                             garantindo que decisões estratégicas levem a resultados sólidos.
@@ -115,12 +119,12 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="p-4">
-                        <div class=" d-flex align-items-center mb-3">
+                    <div class="card-sobre p-4">
+                        <div class="d-flex align-items-center mb-3">
                             <img src="img/visao-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Visão</h2>
                         </div>
-                        <div class="raleway-fonte fs-5">
+                        <div class="raleway-fonte card-conteudo-sobre fs-5">
                             Ser referência nacional na conexão entre lojistas e fornecedores, reconhecida por
                             eficiência,
                             transparência e confiança.
@@ -129,12 +133,12 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="p-4">
+                    <div class="card-sobre p-4">
                         <div class="d-flex align-items-center mb-3">
                             <img src="img/valores-sobre.png" class="img-fluid me-2" alt="...">
                             <h2 class="raleway-fonte fw-bold m-0">Valores</h2>
                         </div>
-                        <div class="raleway-fonte fs-5">
+                        <div class="card-conteudo-sobre raleway-fonte fs-5">
                             <ul>
                                 <li>Transparência</li>
                                 <li>Confiança</li>
@@ -152,11 +156,13 @@
     <footer class="site-footer py-3 my-4">
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
+            <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
         </div>
     </footer>
 

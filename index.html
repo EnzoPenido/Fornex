@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="style.css">
     <title>Home</title>
 </head>
 
@@ -14,18 +14,22 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <img src="/img/logo.png" class="navbar-brand logo">
+            <a href="index.html" class="navbar-brand logo">
+                <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
 
                 </ul>
                 <form class="search-form d-flex w-100" role="search">
-                    <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" />
+                    <input class="form-control search-bar" type="search" placeholder="Pesquisar" aria-label="Search" />
                 </form>
 
                 <div class="nav-btns d-none d-md-flex">
@@ -36,7 +40,7 @@
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
-                            <li><a class="dropdown-item" href="home.html">Home</a></li>
+                            <li><a class="dropdown-item" href="index.html">Home</a></li>
                             <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
                         </ul>
                     </div>
@@ -46,7 +50,7 @@
                     <a href="#" class="d-block nav-mobile-link mb-2">Entrar</a>
                     <a href="#" class="d-block btn btn-cad-emp mb-2">Cadastrar Empresa</a>
                     <div class="mobile-links">
-                        <a class="d-block dropdown-item" href="home.html">Home</a>
+                        <a class="d-block dropdown-item" href="index.html">Home</a>
                         <a class="d-block dropdown-item" href="sobre.html">Sobre</a>
                     </div>
                 </div>
@@ -56,7 +60,7 @@
                 <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
-                    <li><a class="dropdown-item" href="home.html">Home</a></li>
+                    <li><a class="dropdown-item" href="index.html">Home</a></li>
                     <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
                 </ul>
             </div>
@@ -94,27 +98,27 @@
             </div>
         </div>
         <div class="row justify-content-center text-center g-4">
-            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+            <div class="col col-md-4 col-lg-2 vtg-content">
                 <img src="/img/abrangencia.png" class="w-50" alt="Abrangência">
                 <h2>Abrangência</h2>
                 <p>Fornecedores de todos os setores em todo o Brasil</p>
             </div>
-            <div class="col-4 col-md-4 col-lg-2 vtg-content">
-                <img src="/img/orçamento.png" class="w-50" alt="Orçamento Rápido">
+            <div class="col col-md-4 col-lg-2 vtg-content">
+                <img src="/img/orcamento.png" class="w-50" alt="Orçamento Rápido">
                 <h2>Orçamento Rápido</h2>
                 <p>Função exclusiva do nosso site</p>
             </div>
-            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+            <div class="col col-md-4 col-lg-2 vtg-content">
                 <img src="/img/filtro.png" class="w-50" alt="Filtros Dinâmicos">
                 <h2>Filtros Dinâmicos</h2>
                 <p>Para Tipo de Fornecedor, Localização e Avaliação</p>
             </div>
-            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+            <div class="col col-md-4 col-lg-2 vtg-content">
                 <img src="/img/tempo.png" class="w-50" alt="Tempo Otimizado">
                 <h2>Tempo Otimizado</h2>
                 <p>Nossa equipe está sempre pronta a ajudar!</p>
             </div>
-            <div class="col-4 col-md-4 col-lg-2 vtg-content">
+            <div class="col col-md-4 col-lg-2 vtg-content">
                 <img src="/img/vip.png" class="w-50" alt="Atendimento VIP">
                 <h2>Atendimento VIP</h2>
                 <p>Projetos personalizados de pesquisas de fornecedores</p>
@@ -122,14 +126,16 @@
         </div>
     </div>
 
-    <div class="orçamento row">
-        <div class="col-md-6 col-lg-6">
-            <img src="/img/calculadora.png" class="orçamento-img img-fluid">
+    <div class="orcamento row">
+        <div class="col-md-6 col-lg-3">
+            <img src="/img/calculadora.png" class="orcamento-img img-fluid">
         </div>
-        <div class="orçamento-text col-md-6 col-lg-6 text-center">
+        <div class="orcamento-text col-md-6 col-lg-8 text-md-start align-items-center">
             <h1>Como o orçamento rápido funciona</h1>
-            <p>Você, cliente, preenche um formulário instruindo as especificações do seu pedido e as empresas que deseja
-                contatar, que por sua vez analisam o que foi requisitado e respondem com sua oferta.
+            <p>Você, <span>cliente</span>, preenche um <span>formulário</span> instruindo as <span>especificações</span>
+                do seu pedido e as empresas que deseja
+                contatar, que por sua vez <span>analisam</span> o que foi requisitado e <span>respondem</span> com sua
+                <span>oferta</span>.
             </p>
         </div>
     </div>
@@ -139,7 +145,7 @@
     <footer class="site-footer py-3 my-4">
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
                 <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
             </ul>

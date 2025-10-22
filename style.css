@@ -1,5 +1,5 @@
 /* ==========================
-   GERAL
+           GERAL
 ========================== */
 * {
     scrollbar-width: none;
@@ -13,7 +13,7 @@
 }
 
 /* ==========================
-   DROPDOWN
+          DROPDOWN
 ========================== */
 .dropdown-menu {
     position: absolute !important;
@@ -28,7 +28,7 @@
 }
 
 /* ==========================
-   NAVBAR
+          NAVBAR
 ========================== */
 .navbar {
     background-color: #00A5C1 !important;
@@ -106,7 +106,7 @@
 }
 
 /* ==========================
-   MEDIA QUERIES
+        MEDIA QUERIES
 ========================== */
 
 /* --- Mobile (até 767.98px) --- */
@@ -141,15 +141,10 @@
     }
 
     .mobile-menu {
-        display: none;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         margin-top: 1rem;
         /* Afastamento do campo de busca */
-    }
-
-    .collapse.navbar-collapse.show .mobile-menu {
-        display: block !important;
     }
 
     /* Links 'Entrar' e links do menu */
@@ -229,7 +224,61 @@
 }
 
 /* ==========================
-   HOME
+    ANIMAÇÃO HAMBURGUER
+========================== */
+
+/* Remove o ícone padrão do Bootstrap (caso ainda esteja lá) */
+.navbar-toggler .navbar-toggler-icon {
+    display: none;
+}
+
+/* Garante que o botão não tenha bordas que atrapalhem a animação */
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Estilo base das 3 barras do ícone */
+.navbar-toggler .toggler-icon-bar {
+    display: block;
+    width: 24px;
+    /* Largura da barra */
+    height: 3px;
+    /* Espessura da barra */
+    background-color: #ffffff;
+    /* Cor da barra (branca) */
+    margin: 5px 0;
+    /* Espaçamento entre as barras */
+    transition: all 0.3s ease-in-out;
+    border-radius: 1px;
+}
+
+/* --- Animação para "X" quando o menu está aberto --- */
+/* O seletor [aria-expanded="true"] é ativado pelo JS do Bootstrap */
+
+/* Gira a primeira barra */
+.navbar-toggler[aria-expanded="true"] .toggler-icon-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    /* Move 8px para baixo (altura da barra + margem) e gira */
+}
+
+/* Esconde a barra do meio */
+.navbar-toggler[aria-expanded="true"] .toggler-icon-bar:nth-child(2) {
+    opacity: 0;
+}
+
+/* Gira a terceira barra */
+.navbar-toggler[aria-expanded="true"] .toggler-icon-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    /* Move 8px para cima e gira */
+}
+
+/* ==========================
+            HOME
 ========================== */
 .objetivo-son {
     display: flex;
@@ -282,15 +331,34 @@
     color: #acf3ff;
     font-size: 2rem;
 }
-.orçamento-text{
-    font-size: 3rem;
+
+.orcamento-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
+    p {
+        font-size: clamp(25px, 3vw, 48px);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
+
+.orcamento-text p span {
+    color: #5a38bb;
+    font-weight: 800;
+}
+
+@media (max-width: 768px) {
+    .orcamento-img {
+        width: 50%;
+    }
+}
+
 /* ==========================
-   SOBRE
+           SOBRE
 ========================== */
 .background-sobre {
     background-image: url('img/fundo-sobre.png');
@@ -301,25 +369,72 @@
 .card-sobre {
     border-radius: 10px;
     background-color: #2e526f;
-    display: flex;
-    flex-direction: column;
     color: white;
 }
 
 /* ==========================
-    CADASTRO
+         CADASTRO
 =========================== */
 
 .background-cadastro {
     background-color: #6fc3da;
 }
 
-.card-cadastro {
+.form-background {
+    padding: 3%;
+}
+
+.form-container {
+    width: 40%;
     background-color: #00a5c1;
+    height: 75vh;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.20);
+    h1{
+        color: white;
+    }
+}
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+    span {
+        font-size: 1.5rem;
+        color: white;
+        margin-top: 4%;
+    }
+}
+
+.cadastro-input {
+    border-radius: 5px;
+    border: none;
+    font-size: 1.3rem;
+}
+
+.senha-input {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.senha-container {
+    justify-content: space-between;
+}
+
+.cadastro-confirmar {
+    font-size: 2rem;
+    input {
+        border-radius: 10px;
+        background-color: #737373;
+        border: none;
+        color: white;
+        box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.20);
+    }
 }
 
 /* ==========================
-   FOOTER
+          FOOTER
 ========================== */
 .site-footer,
 .container footer {
@@ -372,4 +487,14 @@
 
 .site-footer hr {
     display: none !important;
+}
+
+/* ==========================
+          CATALOGO
+========================== */
+
+.catalogo{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
