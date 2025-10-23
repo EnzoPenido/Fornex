@@ -15,8 +15,9 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <img src="/img/logo.png" class="navbar-brand logo">
-
+            <a href="index.html" class="navbar-brand logo">
+                <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+            </a>
         </div>
     </nav>
     <!--Fim do header-->
@@ -25,7 +26,7 @@
     <div class="form-background w-100 d-flex align-items-center justify-content-center">
         <div class="form-container d-flex align-items-center justify-content-center">
             <h1>Login</h1>
-            <form method="POST" action="/login.html" class="form-cadastro w-75">
+            <form method="POST" action="/login" class="form-cadastro w-75" id="form-login">
                 <span>Nome:</span>
                 <input type="text" name="nome" class="cadastro-input">
                 <span>Email:</span>
@@ -40,7 +41,8 @@
                         <input type="password" name="ConfSenha" class="cadastro-input">
                     </div>
                 </div>
-                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar"><input type="submit" value="Confirmar" class=" w-50"></div>
+                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar"><input type="submit"
+                        value="Confirmar" class=" w-50"></div>
 
 
             </form>

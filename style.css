@@ -280,27 +280,9 @@
 /* ==========================
             HOME
 ========================== */
-.objetivo-son {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.objetivo-son h1 {
-    font-size: 3rem;
-}
-
-.objetivo-son p {
-    font-size: 1.7rem;
-}
-
 .objetivo-son p span {
     color: #5a38bb;
     font-weight: 800;
-}
-
-.HomeText {
-    width: 60%;
 }
 
 .vantagens {
@@ -332,29 +314,9 @@
     font-size: 2rem;
 }
 
-.orcamento-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p {
-        font-size: clamp(25px, 3vw, 48px);
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-}
-
 .orcamento-text p span {
     color: #5a38bb;
     font-weight: 800;
-}
-
-@media (max-width: 768px) {
-    .orcamento-img {
-        width: 50%;
-    }
 }
 
 /* ==========================

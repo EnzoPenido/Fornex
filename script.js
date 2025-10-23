@@ -1,22 +1,29 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3000;
-const fs = require('fs');
 
-//Middlewares
-app.use(express.urlencoded({extended:true}));
+// Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'Fornex')));
 
-// Rotas separadas
+// Servir arquivos estáticos (HTML, CSS, JS)
+app.use(express.static(__dirname));
+
+// Importar rotas
 const rotaCadastro = require('./rotas/cadastro');
 const rotaLogin = require('./rotas/login');
 
-// Página inicial
-app.get('/', (req,res) => {
-    res.redirect('/login.html');
+// Usar rotas
+app.use('/cadastro', rotaCadastro);
+app.use('/login', rotaLogin);
+
+// Página inicial (index.html)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(port, () =>{
-    console.log(`Server rodando em http://localhost${port}`)
-})
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`✅ Servidor rodando em: http://localhost:${port}`);
+});

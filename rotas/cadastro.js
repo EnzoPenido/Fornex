@@ -12,7 +12,7 @@ if (!fs.existsSync(dataPath)) {
 
 // Exibe página de cadastro
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/cadastro.html'));
+  res.sendFile(path.join(__dirname, '../cadastro.html'));
 });
 
 // Recebe dados do formulário
@@ -27,18 +27,32 @@ router.post('/', (req, res) => {
     return res.status(400).send('As senhas não coincidem!');
   }
 
-  const usuarios = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  fs.readFile(dataPath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Erro ao ler arquivo.');
+    }
 
-  // Verifica se já existe o email cadastrado
-  if (usuarios.find(u => u.email === email)) {
-    return res.status(400).send('Este e-mail já está cadastrado!');
-  }
+    let usuarios = [];
+    if (data.trim() !== '') {
+      try {
+        usuarios = JSON.parse(data);
+      } catch {
+        usuarios = [];
+      }
+    }
+    if (usuarios.find(u => u.email === email)) {
+      return res.status(400).send('Este e-mail já está cadastrado!');
+    }
 
-  usuarios.push({ nome, email, senha, cpf, telefone });
-  fs.writeFileSync(dataPath, JSON.stringify(usuarios, null, 2));
+    usuarios.push({ nome, email, senha, cpf, telefone });
 
-  // Redireciona para login
-  res.redirect('/login.html');
+    fs.writeFile(dataPath, JSON.stringify(usuarios, null, 2), (err) => {
+      if (err) {
+        return res.status(500).send('Erro ao salvar usuário.');
+      }
+      res.redirect('/login.html');
+    });
+  });
 });
 
 module.exports = router;
