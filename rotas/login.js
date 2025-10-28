@@ -3,32 +3,52 @@ const path = require('path');
 const fs = require('fs');
 
 const router = express.Router();
-const dataPath = path.join(__dirname, '../data/usuarios.json');
+const usuariosPath = path.join(__dirname, '../data/usuarios.json');
+const empresasPath = path.join(__dirname, '../data/empresas.json');
 
-//Exibe pagina de login
-router.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, '../Fornex/login.html'));
-});
+router.post('/', (req, res) => {
+  const { email, senha } = req.body;
 
-//Valida login
-router.post('/', (req, res) =>{
-  const {email, senha} = req.body;
-
-  if(!email || !senha) {
-    return res.status(400).send('Preencha todos os campos!');
+  if (!email || !senha) {
+    return res.status(400).json({ message: 'Preencha todos os campos!' });
   }
 
-  const usuarios = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-  const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+  try {
+    // Tenta encontrar como Usuário (Cliente)
+    const usuariosData = fs.readFileSync(usuariosPath, 'utf8');
+    const usuarios = JSON.parse(usuariosData);
+    const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
-  if (!usuario) {
-    return res.status(400).send('E-mail ou senha incorretos!');
+    if (usuario) {
+      // Encontrou um cliente
+      return res.json({
+        message: 'Login de cliente bem-sucedido!',
+        tipo: 'cliente',
+        dados: usuario
+      });
+    }
+
+    // Se não for cliente, tenta encontrar como Empresa
+    const empresasData = fs.readFileSync(empresasPath, 'utf8');
+    const empresas = JSON.parse(empresasData);
+    const empresa = empresas.find(e => e.email === email && e.senha === senha);
+
+    if (empresa) {
+      // Encontrou uma empresa
+      return res.json({
+        message: 'Login de empresa bem-sucedido!',
+        tipo: 'empresa',
+        dados: empresa // Envia os dados da empresa
+      });
+    }
+
+    // Se não encontrou nenhum
+    return res.status(401).json({ message: 'E-mail ou senha incorretos!' });
+
+  } catch (err) {
+    console.error("Erro ao ler arquivos de dados:", err);
+    return res.status(500).json({ message: 'Erro interno do servidor.' });
   }
-
-
-  //Redireciona para home
-  res.redirect('/index.html');
-
 });
 
 module.exports = router;

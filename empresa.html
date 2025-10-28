@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -11,11 +11,13 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a href="index.html" class="navbar-brand logo">
@@ -24,137 +26,143 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
+                    class="toggler-icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-
-                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0"></ul>
                 <form class="search-form d-flex w-100" role="search">
-                    <input class="form-control search-bar" type="search" placeholder="Pesquisar" aria-label="Search" />
+                    <input class="form-control search-bar" type="search" placeholder="Buscar por nome, ramo..."
+                        aria-label="Search" name="q" />
                 </form>
-
-                <div class="nav-btns d-none d-md-flex">
-                    <a href="#" class="btn btn-link text-white text-decoration-none">Entrar</a>
-                    <a href="#" class="btn btn-cad-emp">Cadastrar Empresa</a>
-
-                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex">
+                <div class="nav-btns d-none d-md-flex align-items-center">
+                    <div id="navbar-default-buttons" style="display: flex;">
+                        <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
+                        <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                    </div>
+                    <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40" height="40"
+                                class="rounded-circle me-2">
+                        </a>
+                        <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"></ul>
+                    </div>
+                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: white; font-size: 1.5rem;">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
                             <li><a class="dropdown-item" href="index.html">Home</a></li>
-                            <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
+                            <li><a class="dropdown-item" href="#">Sobre</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="mobile-menu d-md-none mt-3">
-                    <a href="#" class="d-block nav-mobile-link mb-2">Entrar</a>
-                    <a href="#" class="d-block btn btn-cad-emp mb-2">Cadastrar Empresa</a>
-                    <div class="mobile-links">
-                        <a class="d-block dropdown-item" href="index.html">Home</a>
-                        <a class="d-block dropdown-item" href="sobre.html">Sobre</a>
+                <div class="mobile-menu d-md-none mt-3 w-100">
+                    <div id="navbar-default-buttons-mobile" style="display: block;">
+                        <a href="login.html" class="d-block nav-mobile-link mb-2 text-center">Entrar</a>
+                        <a href="cadastro_empresa.html" class="d-block btn btn-cad-emp mb-2 w-100">Cadastrar Empresa</a>
+                    </div>
+                    <div id="navbar-user-links-mobile" style="display: none;"></div>
+                    <hr style="border-top: 1px solid white;">
+                    <div class="mobile-links text-center">
+                        <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
+                        <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
+                        <a class="d-block dropdown-item mb-2" href="#">Sobre</a>
                     </div>
                 </div>
             </div>
-
-            <div class="mobile-hamburger d-md-none">
-                <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
-                    <li><a class="dropdown-item" href="index.html">Home</a></li>
-                    <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
-                </ul>
-            </div>
+            <div class="mobile-hamburger d-md-none ms-auto"></div>
         </div>
     </nav>
-    <!--Fim do header-->
-    <div class="min-vh-100 raleway-fonte">
+    <div class="page-content-wrapper">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="d-flex justify-content-center my-2">
-                        <img src="img/BioGarden.png" alt="" class="w-75 img-fluid">
+        <div id="controles-edicao" style="display: none;">
+            <button id="btn-editar" class="btn btn-warning">Editar Página</button>
+            <button id="btn-salvar" class="btn btn-success" style="display: none;">Salvar</button>
+            <button id="btn-cancelar" class="btn btn-secondary" style="display: none;">Cancelar</button>
+        </div>
+        <div class="min-vh-100 raleway-fonte">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 d-flex flex-column">
+                        <img id="empresaImagem" src="/img/IconeConta.png" alt="Logo da Empresa"
+                            class="w-100 img-fluid rounded shadow-sm view-mode">
+                        <div class="edit-mode" style="display: none;">
+                            <label for="input-imagem" class="form-label">Trocar Imagem:</label>
+                            <input type="file" id="input-imagem" class="form-control">
+                        </div>
+                        <div class="px-3 mt-3">
+                            <div class="my-1 fw-bold"><span id="empresaAvaliacao">Avaliação: (A implementar)</span>
+                            </div>
+                            <div class="my-1 fw-bold view-mode">
+                                <img src="/img/PinLocalizacao.png" alt="" class="img-fluid me-1" style="width: 16px;">
+                                <span id="empresaLocalizacao">Carregando...</span>
+                            </div>
+                            <div class="edit-mode" style="display: none;">
+                                <label for="input-localizacao" class="form-label">Localização:</label>
+                                <input type="text" id="input-localizacao" class="form-control">
+                            </div>
+                            <div class="my-1 fw-bold view-mode"><span id="empresaTelefone">Carregando...</span></div>
+                            <div class="edit-mode" style="display: none;">
+                                <label for="input-telefone" class="form-label">Telefone:</label>
+                                <input type="text" id="input-telefone" class="form-control">
+                            </div>
+                        </div>
                     </div>
-                    <div class="px-3">
-                        <div class="my-1 fw-bold">
-                            <span>Avaliação</span><img src="" alt="">
+                    <div class="col-md-8 p-4">
+                        <div class="my-1">
+                            <h1 id="empresaNome" class="view-mode">Carregando...</h1>
+                            <input type="text" id="input-nome" class="edit-mode form-control" style="display: none;">
+                            <h5 id="empresaDescricao" class="view-mode"></h5>
+                            <div class="edit-mode" style="display: none;">
+                                <label for="input-descricao" class="form-label">Descrição Curta (Ramo):</label>
+                                <input type="text" id="input-descricao" class="form-control">
+                            </div>
                         </div>
-
-                        <div class="my-1 fw-bold">
-                            <img src="img/PinLocalizacao.png" alt="" class="img-fluid me-1"><span>São Caetano do
-                                Sul</span>
+                        <div class="my-3">
+                            <h6>Sobre:</h6>
+                            <p id="empresaSobre" class="view-mode"></p>
+                            <div class="edit-mode" style="display: none;">
+                                <label for="input-sobre" class="form-label">Sobre a Empresa:</label>
+                                <textarea id="input-sobre" class="edit-mode form-control"
+                                    style="display: none;"></textarea>
+                            </div>
                         </div>
-
-                        <div class="my-1 fw-bold">
-                            <span>+11 (22) 1234-5678</span>
-                        </div>
+                        <a id="btn-fazer-orcamento" class="btn btn-primary mt-4" href="#" role="button"
+                            data-bs-toggle="modal" data-bs-target="#modalOrcamento" style="display: none;">Fazer
+                            orçamento</a>
                     </div>
-
                 </div>
-                <div class="col-md-8 p-4">
-                    <div class="my-1">
-                        <div class="">
-                            <h1>BioGarden</h1>
-                        </div>
-                        <div class="">
-                            <h5>Empresa de Agricultura</h5>
-                        </div>
+            </div>
+
+            <div class="container mt-4">
+                <h1>Categorias</h1>
+                <div class="p-4 bg-body-secondary rounded view-mode">
+                    <div id="empresaCategorias" class="row">
+                        <span class="text-dark">Carregando...</span>
                     </div>
+                </div>
+                <div class="edit-mode p-4" style="display: none;">
+                    <label for="input-categorias" class="form-label">Categorias (separadas por vírgula):</label>
+                    <input type="text" id="input-categorias" class="form-control">
+                    <small>Ex: Tecnologia, Agricultura, Ferramentas</small>
+                </div>
+            </div>
 
-                    <div class="my-3">
-                        <span>A BioGarden é uma empresa que trabalha no ramo da agricultura, atualmente fornecemos
-                            diversos
-                            tipos de alimentos, como batata, cenoura, etc...
-
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus
-                            lobortis
-                            condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et
-                            netus
-                            et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et,
-                            sagittis
-                            ac,
-                            posuere eu, lectus. Nam mattis, felis ut adipiscing. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor
-                            massa.
-                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                            egestas.
-                            Nulla
-                            at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis
-                            ut
-                            adipiscing.
-
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus
-                            lobortis
-                            condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et
-                            netus
-                            et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et,
-                            sagittis
-                            ac,
-                            posuere eu, lectus. Nam mattis, felis ut adipiscing.</span>
-                    </div>
-                    <a class="btn btn-primary mt-4" href="#" role="button">Fazer orçamento</a>
+            <div class="container mt-4">
+                <h1>Produtos</h1>
+                <div class="p-4 bg-body-secondary rounded view-mode">
+                    <div id="empresaProdutos" class="row text-light"></div>
+                </div>
+                <div class="edit-mode p-4" style="display: none;">
+                    <label for="input-produtos" class="form-label">Produtos (separados por vírgula):</label>
+                    <input type="text" id="input-produtos" class="form-control">
+                    <small>Ex: Maçã, Laranja, Cenoura</small>
                 </div>
             </div>
         </div>
-
-        <div class="container mt">
-            <h1>Produtos</h1>
-        </div>
-
-        <div class="p-4" style="min-width: 100px;">
-            <div class="container bg-body-secondary rounded d-flex">
-                <div class="row text-light">
-                    <div class="col bg-secondary m-1">Banana</div>
-                    <div class="col bg-secondary m-1">Maçã</div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
 
@@ -162,16 +170,41 @@
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
             </ul>
             <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <div class="modal fade" id="modalOrcamento" tabindex="-1" aria-labelledby="modalOrcamentoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalOrcamentoLabel">Solicitar Orçamento</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-orcamento">
+                        <input type="hidden" id="orcamento-empresa-id" value="">
+                        <input type="hidden" id="orcamento-empresa-nome" value="">
+                        <div class="mb-3">
+                            <label for="orcamento-mensagem" class="form-label">Mensagem (descreva seu pedido)</label>
+                            <textarea class="form-control" id="orcamento-mensagem" rows="4" required
+                                placeholder="Ex: Preciso de 10 unidades do produto X..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" form="form-orcamento" class="btn btn-primary">Enviar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontEnd/navbar.js"></script>
+    <script src="/frontEnd/empresa_front.js"></script>
 </body>
 
 </html>

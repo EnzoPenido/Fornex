@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro Empresa - ForneX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="background-cadastro">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand logo mx-auto">
+                <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container text-light my-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-11 form-container py-3">
+                <h2 class="text-center">Cadastrar Empresa</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nome da empresa:</label>
+                        <input type="text" name="nome" class="form-control" id="exampleFormControlInput1"
+                            placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Endereço de email:</label>
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="nome@exemplo.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">CNPJ:</label>
+                        <input type="text" name="cnpj" class="form-control" id="exampleFormControlInput1"
+                            placeholder="00.000.000/001-00">
+                    </div>
+
+                    <div class="row align-items-center mb-3">
+                        <div class="col-6">
+                            <label for="inputPassword6" class="col-form-label">Senha:</label>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputPassword6" class="col-form-label">Confirmar senha:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" name="senha" id="inputPassword6" class="form-control"
+                                aria-describedby="passwordHelpInline">
+                        </div>
+                        <div class="col-6">
+                            <input type="password" name="ConfSenha" id="inputPassword6" class="form-control"
+                                aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Endereço:</label>
+                        <input type="text" name="endereco" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Cidade, Estado">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Telefone:</label>
+                        <input type="text" name="telefone" class="form-control" id="exampleFormControlInput1"
+                            placeholder="(**) *****-****">
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column align-items-center">
+                        <button type="submit" class="btn btn-secondary btn-lg">Continuar</button>
+                        <span class="mt-1 text-center text-light">
+                            Já tem uma conta? <a href="login.html">Faça login aqui</a>.
+                        </span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="form-background w-100 d-flex align-items-center justify-content-center">
+        <div class="form-container d-flex align-items-center justify-content-center">
+            <h1>Cadastro Empresa</h1>
+            <form method="POST" action="/cadastroEmpresa" id="FormCadastroEmpresa" class="form-cadastro w-75">
+                <span>Nome da Empresa:</span>
+                <input type="text" name="nome" class="cadastro-input" required>
+
+                <span>Email de Contato:</span>
+                <input type="email" placeholder="contato@empresa.com" name="email" class="cadastro-input" required>
+
+                <span>CNPJ:</span>
+                <input type="text" placeholder="00.000.000/0001-00" name="cnpj" class="cadastro-input" required>
+
+                <span>Descrição Curta (Ramo):</span>
+                <input type="text" placeholder="Ex: Agricultura, Tecnologia" name="descricao" class="cadastro-input">
+
+                <div class="d-flex senha-container">
+                    <div class="senha-input">
+                        <span>Senha:</span>
+                        <input type="password" name="senha" class="cadastro-input" required>
+                    </div>
+                    <div class="senha-input">
+                        <span>Confirmar Senha:</span>
+                        <input type="password" name="ConfSenha" class="cadastro-input" required>
+                    </div>
+                </div>
+
+                <span>Endereço:</span>
+                <input type="text" placeholder="Cidade, Estado" name="endereco" class="cadastro-input">
+
+                <span>Telefone:</span>
+                <input type="text" placeholder="(##) #####-####" name="telefone" class="cadastro-input">
+
+                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar">
+                    <input type="submit" value="Confirmar Cadastro" class=" w-50">
+                </div>
+                <p class="mt-4 text-center" style="color: white;">
+                    Já tem uma conta? <a href="login.html" style="color: #00A5C1; font-weight: bold;">Faça login
+                        aqui</a>.
+                </p>
+            </form>
+        </div>
+    </div> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

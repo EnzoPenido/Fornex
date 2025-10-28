@@ -4,54 +4,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Login - ForneX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="background-cadastro">
-
-    <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand logo">
-                <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+            <a href="index.html" class="navbar-brand logo mx-auto"> <img src="/img/logo.png" alt="ForneX Home"
+                    class="d-block w-100">
             </a>
         </div>
     </nav>
-    <!--Fim do header-->
-
-
     <div class="form-background w-100 d-flex align-items-center justify-content-center">
         <div class="form-container d-flex align-items-center justify-content-center">
             <h1>Login</h1>
-            <form method="POST" action="/login" class="form-cadastro w-75" id="form-login">
-                <span>Nome:</span>
-                <input type="text" name="nome" class="cadastro-input">
+            <form class="form-cadastro w-75" id="form-login">
                 <span>Email:</span>
-                <input type="email" placeholder="exemplo@gmail.com" name="email" class="cadastro-input">
-                <div class="d-flex senha-container">
-                    <div class="senha-input">
-                        <span>Senha:</span>
-                        <input type="password" name="senha" class="cadastro-input">
-                    </div>
-                    <div class="senha-input">
-                        <span>Confirmar Senha:</span>
-                        <input type="password" name="ConfSenha" class="cadastro-input">
-                    </div>
+                <input type="email" placeholder="exemplo@gmail.com" name="email" class="cadastro-input" required>
+                <div class="senha-input mt-3">
+                    <span>Senha:</span>
+                    <input type="password" name="senha" class="cadastro-input" required>
                 </div>
-                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar"><input type="submit"
-                        value="Confirmar" class=" w-50"></div>
-
-
+                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar">
+                    <input type="submit" value="Confirmar" class=" w-50">
+                </div>
+                <p class="mt-4 text-center" style="color: white;">
+                    Não possui conta? Crie a sua <a href="cadastro.html"
+                        style="color: #fffb00; font-weight: bold;">aqui</a>.
+                </p>
             </form>
         </div>
     </div>
+
     <script src="/frontEnd/login_front.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -8,14 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Home</title>
+    <title>Home - ForneX</title>
 </head>
 
 <body>
-    <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a href="index.html" class="navbar-brand logo">
@@ -24,57 +22,62 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
+                    class="toggler-icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-
-                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0"></ul>
                 <form class="search-form d-flex w-100" role="search">
-                    <input class="form-control search-bar" type="search" placeholder="Pesquisar" aria-label="Search" />
+                    <input class="form-control search-bar" type="search" placeholder="Buscar por nome, ramo..."
+                        aria-label="Search" name="q" />
                 </form>
 
-                <div class="nav-btns d-none d-md-flex">
-                    <a href="login.html" class="btn btn-link text-white text-decoration-none" id="BtnLogin">Entrar</a>
-                    <a href="cadastro.html" class="btn btn-cad-emp" id="BtnCadastro">Cadastrar Empresa</a>
-
-                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex">
+                <div class="nav-btns d-none d-md-flex align-items-center">
+                    <div id="navbar-default-buttons" style="display: flex;">
+                        <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
+                        <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                    </div>
+                    <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40" height="40"
+                                class="rounded-circle me-2">
+                        </a>
+                        <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"></ul>
+                    </div>
+                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: white; font-size: 1.5rem;">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
-                            <li><a class="dropdown-item" href="index.html">Home</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
                             <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="mobile-menu d-md-none mt-3">
-                    <a href="/login.html" class="d-block nav-mobile-link mb-2">Entrar</a>
-                    <a href="/cadastro.html" class="d-block btn btn-cad-emp mb-2">Cadastrar Empresa</a>
-                    <div class="mobile-links">
-                        <a class="d-block dropdown-item" href="index.html">Home</a>
-                        <a class="d-block dropdown-item" href="sobre.html">Sobre</a>
+                <div class="mobile-menu d-md-none mt-3 w-100">
+                    <div id="navbar-default-buttons-mobile" style="display: block;">
+                        <a href="login.html" class="d-block nav-mobile-link mb-2 text-center">Entrar</a>
+                        <a href="cadastro_empresa.html" class="d-block btn btn-cad-emp mb-2 w-100">Cadastrar Empresa</a>
+                    </div>
+                    <div id="navbar-user-links-mobile" style="display: none;">
+                    </div>
+                    <hr style="border-top: 1px solid white;">
+                    <div class="mobile-links text-center">
+                        <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
+                        <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
+                        <a class="d-block dropdown-item mb-2" href="#">Sobre</a>
                     </div>
                 </div>
             </div>
-
-            <div class="mobile-hamburger d-md-none">
-                <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
-                    <li><a class="dropdown-item" href="index.html">Home</a></li>
-                    <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
-                </ul>
+            <div class="mobile-hamburger d-md-none ms-auto">
             </div>
         </div>
     </nav>
-    <!--Fim do header-->
-
     <div class="raleway-fonte">
         <div class="w-100 d-flex justify-content-center align-items-center">
-            <img src="img/bannerHome.png" class="img-fluid w-100" alt="Fundo Home">
+            <img src="/img/bannerHome.png" class="img-fluid w-100" alt="Fundo Home">
         </div>
 
         <div class="p-5">
@@ -90,7 +93,7 @@
                     </p>
                 </div>
                 <div class="col-md-5 d-flex justify-content-center">
-                    <img src="img/aperto-de-mao-home.png" class="img-fluid">
+                    <img src="/img/aperto-de-mao-home.png" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -136,7 +139,7 @@
 
         <div class="orcamento row justify-content-center px-5 py-3 mb-4">
             <div class="col-md-5 d-flex justify-content-center">
-                <img src="img/processaRapidoImagem.png" class="img-fluid">
+                <img src="./img/IconeConta.png" class="img-fluid">
             </div>
             <div class="orcamento-text col-md-6 text-md-start d-flex flex-column justify-content-center">
                 <p class="fs-2">Você, <span>cliente</span>, preenche um <span>formulário</span> instruindo as
@@ -154,27 +157,15 @@
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
             </ul>
             <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>
     </footer>
 
-
-    <script>
-        const usuarioLogado = localStorage.getItem('usuarioLogado');
-        if (usuarioLogado) {
-            const BtnCadastro = document.getElementById("BtnCadastro");
-            const BtnLogin = document.getElementById("BtnLogin");
-
-            BtnCadastro.style.display = "none";
-            BtnLogin.style.display = "none";
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontEnd/navbar.js"></script>
 </body>
 
 </html>

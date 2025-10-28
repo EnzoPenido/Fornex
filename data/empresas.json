@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nome": "BioGarden",
+    "email": "biogarden@gmail.com",
+    "descricao": "testestestestestestesteteste",
+    "senha": "123456789",
+    "endereco": "teste, 123",
+    "telefone": "11987654321",
+    "produtos": [
+      "uva",
+      "maçã",
+      "abacate",
+      "pera"
+    ],
+    "imagem": "/uploads/1/perfil.png",
+    "sobre": "TESTANDOOOOOOOOOOOOOOOOOOOO",
+    "localizacao": "São Paulo",
+    "categorias": [
+      "Tecnologia",
+      "Agricultura",
+      "Ferramentas"
+    ]
+  },
+  {
+    "id": "2",
+    "nome": "BioGarden2",
+    "email": "biogarden2@gmail.com",
+    "cnpj": "32143214/432143",
+    "senha": "4321",
+    "descricao": "testestestestestestesteteste",
+    "endereco": "teste, 123",
+    "telefone": "11987654321",
+    "sobre": "TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+    "produtos": [
+      "uva",
+      "maçã",
+      "abacate",
+      "pera"
+    ],
+    "imagem": "/uploads/2/perfil.png",
+    "localizacao": "undefined"
+  }
+]

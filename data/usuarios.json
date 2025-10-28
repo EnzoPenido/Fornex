@@ -4,6 +4,7 @@
     "email": "enzo@gmail.com",
     "senha": "1234",
     "cpf": "12312312312",
-    "telefone": "1111111111"
+    "telefone": "1111111111",
+    "imagemPerfil": "/uploads/usuarios/12312312312/perfil.png"
   }
 ]

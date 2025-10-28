@@ -1,0 +1,98 @@
+[
+    {
+        "id": "agricultura",
+        "nome": "Agricultura e Pecuária"
+    },
+    {
+        "id": "alimentos",
+        "nome": "Alimentos e Bebidas"
+    },
+    {
+        "id": "automotivo",
+        "nome": "Automotivo"
+    },
+    {
+        "id": "construcao",
+        "nome": "Construção Civil e Materiais"
+    },
+    {
+        "id": "cosmeticos",
+        "nome": "Cosméticos e Higiene Pessoal"
+    },
+    {
+        "id": "eletronicos",
+        "nome": "Eletrônicos e Eletrodomésticos"
+    },
+    {
+        "id": "embalagens",
+        "nome": "Embalagens"
+    },
+    {
+        "id": "energia",
+        "nome": "Energia e Combustíveis"
+    },
+    {
+        "id": "farmaceutico",
+        "nome": "Farmacêutico e Saúde"
+    },
+    {
+        "id": "ferramentas",
+        "nome": "Ferramentas e Equipamentos"
+    },
+    {
+        "id": "grafica",
+        "nome": "Gráfica e Papelaria"
+    },
+    {
+        "id": "informatica",
+        "nome": "Informática e Software"
+    },
+    {
+        "id": "logistica",
+        "nome": "Logística e Transporte"
+    },
+    {
+        "id": "marcenaria",
+        "nome": "Madeira e Marcenaria"
+    },
+    {
+        "id": "metalurgia",
+        "nome": "Metalurgia e Siderurgia"
+    },
+    {
+        "id": "moda",
+        "nome": "Moda e Vestuário"
+    },
+    {
+        "id": "moveis",
+        "nome": "Móveis e Decoração"
+    },
+    {
+        "id": "plastico",
+        "nome": "Plástico e Borracha"
+    },
+    {
+        "id": "quimico",
+        "nome": "Químico e Petroquímico"
+    },
+    {
+        "id": "servicos",
+        "nome": "Serviços (Consultoria, Marketing, etc.)"
+    },
+    {
+        "id": "telecom",
+        "nome": "Telecomunicações"
+    },
+    {
+        "id": "textil",
+        "nome": "Têxtil"
+    },
+    {
+        "id": "utilidades",
+        "nome": "Utilidades Domésticas"
+    },
+    {
+        "id": "vidro",
+        "nome": "Vidro e Cerâmica"
+    }
+]

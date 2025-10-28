@@ -105,6 +105,11 @@
     align-self: center;
 }
 
+#navbar-profile-pic {
+    width: 55px;
+    height: 55px;
+}
+
 /* ==========================
         MEDIA QUERIES
 ========================== */
@@ -342,57 +347,10 @@
     background-color: #6fc3da;
 }
 
-.form-background {
-    padding: 3%;
-}
-
 .form-container {
-    width: 40%;
     background-color: #00a5c1;
-    height: 75vh;
     border-radius: 15px;
-    flex-direction: column;
-    box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.20);
-    h1{
-        color: white;
-    }
-}
-
-.form-cadastro {
-    display: flex;
-    flex-direction: column;
-    span {
-        font-size: 1.5rem;
-        color: white;
-        margin-top: 4%;
-    }
-}
-
-.cadastro-input {
-    border-radius: 5px;
-    border: none;
-    font-size: 1.3rem;
-}
-
-.senha-input {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-}
-
-.senha-container {
-    justify-content: space-between;
-}
-
-.cadastro-confirmar {
-    font-size: 2rem;
-    input {
-        border-radius: 10px;
-        background-color: #737373;
-        border: none;
-        color: white;
-        box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.20);
-    }
+    box-shadow: 12px 12px 0 #5a9aad;
 }
 
 /* ==========================
@@ -407,6 +365,7 @@
 .site-footer {
     margin: 0 !important;
     margin-top: auto;
+    bottom: 0;
 }
 
 .site-footer .nav .nav-link,
@@ -455,8 +414,25 @@
           CATALOGO
 ========================== */
 
-.catalogo{
+.catalogo {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+}
+
+/* ==========================
+          EMPRESA
+========================== */
+
+
+.page-content-wrapper {
+    position: relative;
+    padding-top: 1rem;
+}
+
+#controles-edicao {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
 }
