@@ -22,7 +22,68 @@
     </nav>
     <!--Fim do header-->
 
-    <div class="form-background w-100 d-flex align-items-center justify-content-center">
+    <div class="container text-light my-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-11 form-container py-3">
+                <h2 class="text-center">Cadastro</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nome:</label>
+                        <input type="text" name="nome" class="form-control" id="exampleFormControlInput1"
+                            placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Endereço de email:</label>
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="nome@exemplo.com">
+                    </div>
+
+                    <div class="row align-items-center mb-3">
+                        <div class="col-6">
+                            <label for="inputPassword6" class="col-form-label">Senha:</label>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputPassword6" class="col-form-label">Confirmar senha:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" name="senha" id="inputPassword6" class="form-control"
+                                aria-describedby="passwordHelpInline">
+                        </div>
+                        <div class="col-6">
+                            <input type="password" name="ConfSenha" id="inputPassword6" class="form-control"
+                                aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">CPF:</label>
+                        <input type="text" name="cpf" class="form-control" id="exampleFormControlInput1"
+                            placeholder="00.000.000/001-00">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Telefone:</label>
+                        <input type="text" name="telefone" class="form-control" id="exampleFormControlInput1"
+                            placeholder="(**) *****-****">
+                    </div>
+
+                    <div class="mt-4 d-flex flex-column align-items-end">
+                        <button type="submit" class="btn btn-secondary btn-lg">Continuar</button>
+                    </div>
+
+                    <div class="text-center">
+                        <span class="mt-1 text-light">
+                            Já tem uma conta? <a href="login.html">Faça login aqui</a>.
+                        </span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="form-background w-100 d-flex align-items-center justify-content-center">
         <div class="form-container d-flex align-items-center justify-content-center">
             <h1>Cadastro</h1>
             <form method="POST" action="/cadastro" id="FormCadastro" class="form-cadastro w-75">
@@ -50,7 +111,7 @@
 
             </form>
         </div>
-    </div>
+    </div> -->
 
 
 

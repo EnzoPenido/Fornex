@@ -17,24 +17,35 @@
             </a>
         </div>
     </nav>
-    <div class="form-background w-100 d-flex align-items-center justify-content-center">
-        <div class="form-container d-flex align-items-center justify-content-center">
-            <h1>Login</h1>
-            <form class="form-cadastro w-75" id="form-login">
-                <span>Email:</span>
-                <input type="email" placeholder="exemplo@gmail.com" name="email" class="cadastro-input" required>
-                <div class="senha-input mt-3">
-                    <span>Senha:</span>
-                    <input type="password" name="senha" class="cadastro-input" required>
-                </div>
-                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar">
-                    <input type="submit" value="Confirmar" class=" w-50">
-                </div>
-                <p class="mt-4 text-center" style="color: white;">
-                    Não possui conta? Crie a sua <a href="cadastro.html"
-                        style="color: #fffb00; font-weight: bold;">aqui</a>.
-                </p>
-            </form>
+    <div class="container text-light my-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-11 form-container py-3">
+                <h2 class="text-center">Login</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Endereço de email:</label>
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="nome@exemplo.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword6" class="col-form-label">Senha:</label>
+                        <input type="password" name="senha" id="inputPassword6" class="form-control"
+                            aria-describedby="passwordHelpInline">
+                    </div>
+
+                    <div class="mt-4 d-flex flex-column align-items-end">
+                        <button type="submit" class="btn btn-secondary btn-lg">Continuar</button>
+                    </div>
+
+                    <div class="text-center">
+                        <span class="mt-1 text-light">
+                            Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>.
+                        </span>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 
