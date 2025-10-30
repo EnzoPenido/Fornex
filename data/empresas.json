@@ -40,5 +40,33 @@
     ],
     "imagem": "/uploads/2/perfil.png",
     "localizacao": "undefined"
+  },
+  {
+    "id": "3",
+    "nome": "Caio Ferrer",
+    "email": "caio@gmail.com",
+    "cnpj": "1234567891234",
+    "senha": "1234",
+    "descricao": "",
+    "endereco": "São Paulo",
+    "telefone": "11999999999",
+    "sobre": "",
+    "produtos": [],
+    "imagem": null,
+    "categorias": []
+  },
+  {
+    "id": "4",
+    "nome": "EngreTech",
+    "email": "EngreTech@gmail.com",
+    "cnpj": "12345678978945",
+    "senha": "123456",
+    "descricao": "",
+    "endereco": "São Paulo",
+    "telefone": "119711975543",
+    "sobre": "",
+    "produtos": [],
+    "imagem": null,
+    "categorias": []
   }
 ]

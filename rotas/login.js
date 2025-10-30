@@ -20,7 +20,6 @@ router.post('/', (req, res) => {
     const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
     if (usuario) {
-      // Encontrou um cliente
       return res.json({
         message: 'Login de cliente bem-sucedido!',
         tipo: 'cliente',
