@@ -41,9 +41,28 @@
                                 <h1>R$29,99</h1>
                                 <h4>Por mês</h4>
                             </div>
+                            <button class="btn-plano" data-plano="Comum">Continuar</button>
                         </div>
                     </div>
-                    <div class="p-2">Grid item 2</div>
+                    <div class="p-2 plano2">
+                        <h1>Premium</h1>
+                        <div>
+                            <h3>Recursos incluídos:</h3>
+                            <ol>
+                                <li>Cadastro completo da empresa</li>
+                                <li>Exposição da empresa na listagem geral de fornecedores</li>
+                                <li>Participação nas buscas por categoria e localização</li>
+                                <li>Recebimento de orçamentos e mensagens de clientes</li>
+                                <li>Painel de controle básico (editar perfil, produtos, visualizar solicitações)</li>
+                                <li>Suporte via e-mail</li>
+                            </ol>
+                            <div>
+                                <h1>R$29,99</h1>
+                                <h4>Por mês</h4>
+                            </div>
+                            <button class="btn-plano" data-plano="Premium">Continuar</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -53,50 +72,46 @@
 
     </div>
 
-    <!-- <div class="form-background w-100 d-flex align-items-center justify-content-center">
-        <div class="form-container d-flex align-items-center justify-content-center">
-            <h1>Cadastro Empresa</h1>
-            <form method="POST" action="/cadastroEmpresa" id="FormCadastroEmpresa" class="form-cadastro w-75">
-                <span>Nome da Empresa:</span>
-                <input type="text" name="nome" class="cadastro-input" required>
 
-                <span>Email de Contato:</span>
-                <input type="email" placeholder="contato@empresa.com" name="email" class="cadastro-input" required>
+    <script>
+        document.querySelectorAll('.btn-plano').forEach(botao => {
+            botao.addEventListener('click', async () => {
+                const planoEscolhido = botao.dataset.plano;
 
-                <span>CNPJ:</span>
-                <input type="text" placeholder="00.000.000/0001-00" name="cnpj" class="cadastro-input" required>
+                // Recupera dados do localStorage
+                const dadosEmpresaTemp = JSON.parse(localStorage.getItem('dadosEmpresaTemp'));
 
-                <span>Descrição Curta (Ramo):</span>
-                <input type="text" placeholder="Ex: Agricultura, Tecnologia" name="descricao" class="cadastro-input">
+                if (!dadosEmpresaTemp) {
+                    alert('Erro: Nenhum dado de cadastro encontrado. Volte para a página de cadastro.');
+                    window.location.href = 'cadastroEmpresa.html';
+                    return;
+                }
 
-                <div class="d-flex senha-container">
-                    <div class="senha-input">
-                        <span>Senha:</span>
-                        <input type="password" name="senha" class="cadastro-input" required>
-                    </div>
-                    <div class="senha-input">
-                        <span>Confirmar Senha:</span>
-                        <input type="password" name="ConfSenha" class="cadastro-input" required>
-                    </div>
-                </div>
+                // Adiciona o plano escolhido
+                dadosEmpresaTemp.plano = planoEscolhido;
 
-                <span>Endereço:</span>
-                <input type="text" placeholder="Cidade, Estado" name="endereco" class="cadastro-input">
+                try {
+                    const response = await fetch('/cadastroEmpresa', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(dadosEmpresaTemp)
+                    });
 
-                <span>Telefone:</span>
-                <input type="text" placeholder="(##) #####-####" name="telefone" class="cadastro-input">
-
-                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar">
-                    <input type="submit" value="Confirmar Cadastro" class=" w-50">
-                </div>
-                <p class="mt-4 text-center" style="color: white;">
-                    Já tem uma conta? <a href="login.html" style="color: #00A5C1; font-weight: bold;">Faça login
-                        aqui</a>.
-                </p>
-            </form>
-        </div>
-    </div> -->
-
+                    if (response.ok) {
+                        alert('Cadastro concluído com sucesso!');
+                        localStorage.removeItem('dadosEmpresaTemp'); // limpa o temporário
+                        window.location.href = 'login.html'; // redireciona
+                    } else {
+                        const erro = await response.text();
+                        alert('Erro ao salvar empresa: ' + erro);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('Erro de conexão com o servidor.');
+                }
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

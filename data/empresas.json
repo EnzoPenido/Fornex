@@ -68,5 +68,45 @@
     "produtos": [],
     "imagem": null,
     "categorias": []
+  },
+  {
+    "id": "5",
+    "nome": "eu",
+    "email": "eu@gmail.com",
+    "cnpj": "1234567890123",
+    "senha": "eu",
+    "descricao": "eu",
+    "endereco": "São Paulo",
+    "telefone": "11111111111",
+    "sobre": "eu",
+    "produtos": [
+      "cadeira",
+      "mesa",
+      "madeira",
+      "borracha"
+    ],
+    "imagem": "/uploads/empresas/5/perfil.png",
+    "categorias": [
+      "pessoas",
+      "crianças",
+      "adultos",
+      "idosos"
+    ],
+    "localizacao": "São Paulo"
+  },
+  {
+    "id": "6",
+    "nome": "Madeira",
+    "email": "caio4@gmail.com",
+    "cnpj": "1234567891209",
+    "senha": "1234",
+    "descricao": "",
+    "endereco": "São Paulo",
+    "telefone": "11999999999",
+    "sobre": "",
+    "produtos": [],
+    "imagem": null,
+    "plano": "Comum",
+    "categorias": []
   }
 ]
