@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-t8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,7 +15,7 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand logo">
+            <a href="index.html" class="navbar-brand logo mx-auto">
                 <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
             </a>
         </div>
@@ -26,47 +26,45 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-11 form-container py-3">
                 <h2 class="text-center">Cadastro</h2>
-                <form>
+
+                <form id="FormCadastro">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nome:</label>
-                        <input type="text" name="nome" class="form-control" id="exampleFormControlInput1"
-                            placeholder="">
+                        <label class="form-label">Nome:</label>
+                        <input type="text" name="nome" class="form-control" placeholder="" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Endereço de email:</label>
-                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                            placeholder="nome@exemplo.com">
+                        <label class="form-label">Endereço de email:</label>
+                        <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
                     </div>
 
                     <div class="row align-items-center mb-3">
                         <div class="col-6">
-                            <label for="inputPassword6" class="col-form-label">Senha:</label>
+                            <label class="col-form-label">Senha:</label>
                         </div>
                         <div class="col-6">
-                            <label for="inputPassword6" class="col-form-label">Confirmar senha:</label>
+                            <label class="col-form-label">Confirmar senha:</label>
                         </div>
                         <div class="col-6">
-                            <input type="password" name="senha" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                            <input type="password" name="senha" class="form-control" required>
                         </div>
                         <div class="col-6">
-                            <input type="password" name="ConfSenha" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                            <input type="password" name="confsenha" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">CPF:</label>
-                        <input type="text" name="cpf" class="form-control" id="exampleFormControlInput1"
-                            placeholder="00.000.000/001-00">
+                        <label class="form-label">CPF:</label>
+                        <input type="text" name="cpf" id="cpf" class="form-control" placeholder="000.000.000-00"
+                            required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Telefone:</label>
-                        <input type="text" name="telefone" class="form-control" id="exampleFormControlInput1"
-                            placeholder="(**) *****-****">
+                        <label class="form-label">Telefone:</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control"
+                            placeholder="(00) 00000-0000" required>
                     </div>
+
 
                     <div class="mt-4 d-flex flex-column align-items-end">
                         <button type="submit" class="btn btn-secondary btn-lg">Continuar</button>
@@ -77,87 +75,115 @@
                             Já tem uma conta? <a href="login.html">Faça login aqui</a>.
                         </span>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- <div class="form-background w-100 d-flex align-items-center justify-content-center">
-        <div class="form-container d-flex align-items-center justify-content-center">
-            <h1>Cadastro</h1>
-            <form method="POST" action="/cadastro" id="FormCadastro" class="form-cadastro w-75">
-                <span>Nome:</span>
-                <input type="text" name="nome" class="cadastro-input">
-                <span>Email:</span>
-                <input type="email" placeholder="exemplo@gmail.com" name="email" class="cadastro-input">
-                <div class="d-flex senha-container">
-                    <div class="senha-input">
-                        <span>Senha:</span>
-                        <input type="password" name="senha" class="cadastro-input">
-                    </div>
-                    <div class="senha-input">
-                        <span>Confirmar Senha:</span>
-                        <input type="password" name="ConfSenha" class="cadastro-input">
-                    </div>
-                </div>
-                <span>CPF:</span>
-                <input type="number" placeholder="###.###.###-##" name="cpf" class="cadastro-input">
-                <span>Telefone:</span>
-                <input type="number" placeholder="(##) #####-####" name="telefone" class="cadastro-input">
-                <div class="d-flex w-100 justify-content-center mt-5 cadastro-confirmar"><input type="submit"
-                        value="Confirmar" class=" w-50"></div>
-
-
-            </form>
-        </div>
-    </div> -->
-
-
+    <script src="https://unpkg.com/imask"></script>
 
     <script>
-        document.getElementById("FormCadastro").addEventListener("submit"), async function (event) {
-            event.preventDefault();
+        document.addEventListener("DOMContentLoaded", function () {
 
-            const nome = document.querySelector('input[name="nome"]').value;
-            const email = document.querySelector('input[name="email"]').value;
-            const senha = document.querySelector('input[name="senha"]').value;
-            const confSenha = document.querySelector('input[name="ConfSenha"]').value;
-            const cpf = document.querySelector('input[name="cpf"]').value;
-            const telefone = document.querySelector('input[name="telefone"]').value;
+            // --- 2. INICIALIZA AS MÁSCARAS ---
 
-            if (senha !== confSenha) {
-                alert("As senhas não coincidem!");
-                return;
-            }
+            // Máscara de CPF
+            const cpfInput = document.getElementById("cpf");
+            // Guardamos a máscara na variável 'cpfMask'
+            const cpfMask = IMask(cpfInput, {
+                mask: '000.000.000-00'
+            });
 
-            try {
-                const resposta = await fetch("http://localhost:3000/usuarios/cadastro", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        usuario: email,   // no backend o campo se chama "usuario"
-                        senha: senha,
-                        nome: nome,
-                        cpf: cpf,
-                        telefone: telefone
-                    })
-                })
-                const resultado = await resposta.json();
+            // Máscara de Telefone (aceita 8 ou 9 dígitos)
+            const telInput = document.getElementById("telefone");
+            // Guardamos a máscara na variável 'telMask'
+            const telMask = IMask(telInput, {
+                mask: [
+                    { mask: '(00) 0000-0000' }, // Fixo
+                    { mask: '(00) 00000-0000' } // Celular
+                ]
+            });
 
-                if (resposta.ok) {
-                    alert("Usuário cadastrado com sucesso!");
-                    document.getElementById("FormCadastro").reset();
-                } else {
-                    alert(resultado.message || "Erro ao cadastrar usuário.");
+            // --- FIM DA SEÇÃO DE MÁSCARAS ---
+
+
+            // --- 3. SCRIPT DE SUBMIT ---
+            // Adicionamos 'async' aqui para poder usar 'await' no fetch
+            const form = document.getElementById("FormCadastro");
+            form.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const nome = form.nome.value;
+                const email = form.email.value;
+                const senha = form.senha.value;
+                const confsenha = form.confsenha.value;
+                const cpf = cpfMask.unmaskedValue;
+                const telefone = telMask.unmaskedValue;
+
+                // NOVO: Adicione estas linhas de console.log para ver o que está sendo capturado
+                console.log("Nome:", nome);
+                console.log("E-mail:", email);
+                console.log("CPF (unmasked):", cpf, "Length:", cpf.length);
+                console.log("Telefone (unmasked):", telefone, "Length:", telefone.length);
+                // FIM NOVO
+
+                // 1. Validação dos campos de texto
+                if (!nome || !email || !senha || !confsenha) {
+                    alert("Por favor, preencha todos os campos.");
+                    return;
                 }
-            } catch (erro) {
-                console.error("Erro na requisição:", erro);
-                alert("Erro ao conectar com o servidor");
-            }
-        }
+
+                // 2. Validação do CPF (deve ter 11 dígitos)
+                if (cpf.length !== 11) {
+                    alert("Por favor, preencha o CPF corretamente (11 dígitos).");
+                    return;
+                }
+
+                // 3. Validação do Telefone (deve ter 10 (fixo) ou 11 (celular) dígitos)
+                // O telefone sem máscara precisa ter pelo menos 10 dígitos (DD + 8 dígitos)
+                if (telefone.length < 10) {
+                    alert("Por favor, preencha o Telefone corretamente (DDD + 8 ou 9 dígitos).");
+                    return;
+                }
+
+                if (senha !== confsenha) {
+                    alert("As senhas não coincidem!");
+                    return;
+                }
+
+                try {
+                    const resposta = await fetch("http://localhost:3000/cadastro", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            senha: senha,
+                            nome: nome,
+                            cpf: cpf,
+                            telefone: telefone,
+                            confsenha: confsenha
+                        })
+                    })
+                    const resultado = await resposta.json();
+
+                    if (resposta.ok) {
+                        alert("Usuário cadastrado com sucesso!");
+                        document.getElementById("FormCadastro").reset();
+                        // Limpa as máscaras também
+                        cpfMask.value = '';
+                        telMask.value = '';
+                        window.location.href = 'login.html';
+                    } else {
+                        alert(resultado.message || "Erro ao cadastrar usuário.");
+                    }
+                } catch (erro) {
+                    console.error("Erro na requisição:", erro);
+                    alert("Erro ao conectar com o servidor");
+                }
+            });
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

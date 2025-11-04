@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contato - ForneX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="min-vh-100 d-flex flex-column">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand logo">
+                    <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
+                        class="toggler-icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0"></ul>
+                    <form class="search-form d-flex w-100" role="search">
+                        <input class="form-control search-bar" type="search"
+                            placeholder="Pesquisar por nome, descrição..." aria-label="Search" />
+                    </form>
+
+                    <div class="nav-btns d-none d-md-flex align-items-center">
+                        <div id="navbar-default-buttons" style="display: flex;">
+                            <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
+                            <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                        </div>
+                        <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
+                            <a href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40"
+                                    height="40" class="rounded-circle me-2">
+                            </a>
+                            <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                            </ul>
+                        </div>
+                        <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
+                            <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
+                                <li><a class="dropdown-item" href="index.html">Home</a></li>
+                                <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
+                                <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu d-md-none mt-3 w-100">
+                        <div id="navbar-default-buttons-mobile" style="display: block;" class="px-2">
+                            <div class="d-grid gap-2">
+                                <a href="login.html" class="btn btn-outline-light">Entrar</a>
+                                <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                            </div>
+                        </div>
+                        <div id="navbar-user-links-mobile" style="display: none;">
+                            <div class="d-flex align-items-center mb-3 px-2">
+                                <img id="navbar-profile-pic-mobile" src="/img/IconeConta.png" alt="Perfil" width="40"
+                                    height="40" class="rounded-circle me-3">
+                                <div>
+                                    <span id="navbar-profile-name-mobile"
+                                        class="text-white fw-bold d-block">Usuário</span>
+                                    <span id="navbar-profile-email-mobile" class="text-white-50 d-block"
+                                        style="font-size: 0.8rem;">email@exemplo.com</span>
+                                </div>
+                            </div>
+                            <ul id="navbar-dropdown-menu-mobile" class="list-group list-group-flush">
+                            </ul>
+                        </div>
+                        <hr style="border-top: 1px solid white;">
+                        <div class="mobile-links text-center">
+                            <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
+                            <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
+                            <a class="d-block dropdown-item mb-2" href="sobre.html">Sobre</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-hamburger d-md-none ms-auto"></div>
+            </div>
+        </nav>
+        <div class="container my-5 flex-grow-1">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+
+                    <h1 class="text-center mb-4">Entre em Contato</h1>
+                    <p class="text-center text-muted mb-5">
+                        Tem alguma dúvida, sugestão ou problema? Preencha o formulário abaixo e nossa equipe responderá
+                        o mais breve possível.
+                    </p>
+
+                    <div class="row">
+
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body p-4 p-md-5">
+                                    <h4 class="card-title mb-4">Envie sua Mensagem</h4>
+                                    <form id="formContato">
+                                        <div class="mb-3">
+                                            <label for="contatoNome" class="form-label">Seu Nome</label>
+                                            <input type="text" class="form-control" id="contatoNome"
+                                                placeholder="João da Silva" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contatoEmail" class="form-label">Seu Email</label>
+                                            <input type="email" class="form-control" id="contatoEmail"
+                                                placeholder="joao.silva@email.com" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contatoAssunto" class="form-label">Assunto</label>
+                                            <input type="text" class="form-control" id="contatoAssunto"
+                                                placeholder="Dúvida sobre cadastro" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contatoMensagem" class="form-label">Mensagem</label>
+                                            <textarea class="form-control" id="contatoMensagem" rows="5"
+                                                placeholder="Escreva sua mensagem aqui..." required></textarea>
+                                        </div>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary btn-lg">Enviar
+                                                Mensagem</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="card shadow-sm border-0" style="background-color: #f8f9fa;">
+                                <div class="card-body p-4 p-md-5">
+                                    <h4 class="card-title mb-4">Nossos Canais</h4>
+
+                                    <div class="d-flex mb-3">
+                                        <i class="bi bi-envelope-fill fs-4 me-3 text-primary"></i>
+                                        <div>
+                                            <h6 class="mb-0">Email</h6>
+                                            <p class="text-muted mb-0">contato@fornex.com</p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="d-flex mb-3">
+                                        <i class="bi bi-telephone-fill fs-4 me-3 text-primary"></i>
+                                        <div>
+                                            <h6 class="mb-0">Telefone</h6>
+                                            <p class="text-muted mb-0">(11) 4002-8922</p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="d-flex mb-3">
+                                        <i class="bi bi-geo-alt-fill fs-4 me-3 text-primary"></i>
+                                        <div>
+                                            <h6 class="mb-0">Endereço</h6>
+                                            <p class="text-muted mb-0" style="font-size: 0.9rem;">Av. Digital, 123 -
+                                                Sala 45<br>São Paulo, SP - Brasil</p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <p class="text-muted mt-3" style="font-size: 0.9rem;">
+                                        Nosso horário de atendimento é de Segunda a Sexta, das 9h às 18h.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer py-3 my-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contato</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="/frontEnd/navbar.js"></script>
+
+    <script>
+        document.getElementById('formContato').addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio real do formulário
+
+            const nome = document.getElementById('contatoNome').value;
+
+            // Simulação de envio
+            alert(`Obrigado pelo seu contato, ${nome}!\nSua mensagem foi recebida (simulação).`);
+
+            // Limpa o formulário
+            document.getElementById('formContato').reset();
+        });
+    </script>
+
+</body>
+
+</html>

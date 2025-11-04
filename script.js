@@ -4,6 +4,7 @@ const app = express();
 const port = 3000;
 const fs = require('fs');
 const multer = require('multer');
+const cors = require('cors');
 
 /**
  * Deleta fotos de perfil antigas em um diretório, mantendo apenas o arquivo novo.
@@ -75,6 +76,7 @@ const uploadUsuario = multer({ storage: storageUsuario });
 // --- Fim da Configuração ---
 
 // Middlewares Essenciais
+app.use(cors());
 app.use(express.urlencoded({ extended: true })); // Para ler dados de formulários simples
 app.use(express.json()); // Para ler JSON do corpo das requisições (ex: login)
 app.use('/uploads/usuarios', express.static(path.join(__dirname, 'uploads'))); // Servir imagens da pasta uploads

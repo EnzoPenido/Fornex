@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "nome": "Caio Ferrer",
+    "email": "caio@gmail.com",
+    "senha": "1234",
+    "cpf": "00000000000",
+    "telefone": "11999999999"
+  },
+  {
+    "nome": "Caio Ferrer",
+    "email": "caio4@gmail.com",
+    "senha": "1234",
+    "cpf": "00000000000",
+    "telefone": "11999999999"
+  },
+  {
+    "nome": "Enzo Penido",
+    "email": "enzo@gmail.com",
+    "senha": "1234567",
+    "cpf": "65464654654",
+    "telefone": "98798419516",
+    "imagemPerfil": "/uploads/usuarios/65464654654/perfil.jpg"
+  }
+]

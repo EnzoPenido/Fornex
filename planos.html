@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="background-cadastro">
+<body class="background-cadastro raleway-fonte">
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -20,47 +20,54 @@
     </nav>
 
     <div class="container text-light my-3">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-11 form-container py-3">
-                <h2 class="text-center">Cadastrar Empresa</h2>
+        <div class="row justify-content-center p-3">
+            <div class="col-md-9 col-sm-11 form-container py-4">
+                <h1 class="text-center">Cadastrar Empresa</h1>
+                <div class="justify-content-center gap-5 p-3 row">
 
-                <div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-0 column-gap-3">
-                    <div class="p-2 plano1">
-                        <h1>Comum</h1>
+                    <div class="p-4 plano col-md-5 col-sm-10">
+                        <div class="text-center">
+                            <h1>Comum</h1>
+                        </div>
                         <div>
                             <h3>Recursos incluídos:</h3>
-                            <ol>
-                                <li>Cadastro completo da empresa</li>
-                                <li>Exposição da empresa na listagem geral de fornecedores</li>
-                                <li>Participação nas buscas por categoria e localização</li>
-                                <li>Recebimento de orçamentos e mensagens de clientes</li>
-                                <li>Painel de controle básico (editar perfil, produtos, visualizar solicitações)</li>
-                                <li>Suporte via e-mail</li>
+                            <ol class="ol-plano">
+                                <li class="p-2" style="list-style: disc;">Cadastro completo da empresa</li>
+                                <li class="p-2" style="list-style: disc;">Exposição da empresa na listagem geral de
+                                    fornecedores</li>
+                                <li class="p-2" style="list-style: disc;">Participação nas buscas por categoria e
+                                    localização</li>
+                                <li class="p-2" style="list-style: disc;">Recebimento de orçamentos e mensagens de
+                                    clientes</li>
+                                <li class="p-2" style="list-style: disc;">Painel de controle básico (editar perfil,
+                                    produtos)</li>
+                                <li class="p-2" style="list-style: disc;">Suporte via e-mail</li>
                             </ol>
-                            <div>
-                                <h1>R$29,99</h1>
-                                <h4>Por mês</h4>
-                            </div>
-                            <button class="btn-plano" data-plano="Comum">Continuar</button>
+                            <span class="d-flex justify-content-center">R$29,99<p>/m</p></span>
+                            <div class="w-100 d-flex justify-content-center"><button class="btn-plano"
+                                    data-plano="Comum">Continuar</button></div>
                         </div>
                     </div>
-                    <div class="p-2 plano2">
-                        <h1>Premium</h1>
+
+                    <div class="p-4 plano col-md-5 col-sm-10">
+                        <div class="text-center">
+                            <h1 id="premium">Premium</h1>
+                        </div>
                         <div>
                             <h3>Recursos incluídos:</h3>
-                            <ol>
-                                <li>Cadastro completo da empresa</li>
-                                <li>Exposição da empresa na listagem geral de fornecedores</li>
-                                <li>Participação nas buscas por categoria e localização</li>
-                                <li>Recebimento de orçamentos e mensagens de clientes</li>
-                                <li>Painel de controle básico (editar perfil, produtos, visualizar solicitações)</li>
-                                <li>Suporte via e-mail</li>
+                            <ol class="ol-plano">
+                                <li class="p-2" style="list-style: disc;">Destaque visual nas páginas de busca (posição
+                                    priorizada e selo “Fornecedor Premium”)</li>
+                                <li class="p-2" style="list-style: disc;">Maior exposição em recomendações automáticas e
+                                    páginas iniciais</li>
+                                <li class="p-2" style="list-style: disc;">Sistema de avaliações e feedbacks</li>
+                                <li class="p-2" style="list-style: disc;">Suporte prioritário via chat ou WhatsApp</li>
+                                <li class="p-2" style="list-style: disc;">Relatórios mensais de desempenho</li>
+                                <li class="p-2" style="list-style: disc;">Suporte via e-mail</li>
                             </ol>
-                            <div>
-                                <h1>R$29,99</h1>
-                                <h4>Por mês</h4>
-                            </div>
-                            <button class="btn-plano" data-plano="Premium">Continuar</button>
+                            <span class="d-flex justify-content-center">R$69,99<p>/m</p></span>
+                            <div class="w-100 d-flex justify-content-center"><button class="btn-plano"
+                                    data-plano="Comum" id="btn-premium">Continuar</button></div>
                         </div>
                     </div>
                 </div>
@@ -74,41 +81,50 @@
 
 
     <script>
-        document.querySelectorAll('.btn-plano').forEach(botao => {
-            botao.addEventListener('click', async () => {
-                const planoEscolhido = botao.dataset.plano;
+        document.addEventListener('DOMContentLoaded', () => {
+            // Captura todos os botões de plano
+            const botoesPlano = document.querySelectorAll('.btn-plano');
 
-                // Recupera dados do localStorage
-                const dadosEmpresaTemp = JSON.parse(localStorage.getItem('dadosEmpresaTemp'));
-
-                if (!dadosEmpresaTemp) {
-                    alert('Erro: Nenhum dado de cadastro encontrado. Volte para a página de cadastro.');
-                    window.location.href = 'cadastroEmpresa.html';
-                    return;
-                }
-
-                // Adiciona o plano escolhido
-                dadosEmpresaTemp.plano = planoEscolhido;
-
-                try {
-                    const response = await fetch('/cadastroEmpresa', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(dadosEmpresaTemp)
-                    });
-
-                    if (response.ok) {
-                        alert('Cadastro concluído com sucesso!');
-                        localStorage.removeItem('dadosEmpresaTemp'); // limpa o temporário
-                        window.location.href = 'login.html'; // redireciona
-                    } else {
-                        const erro = await response.text();
-                        alert('Erro ao salvar empresa: ' + erro);
+            botoesPlano.forEach(botao => {
+                botao.addEventListener('click', async () => {
+                    // Recupera dados do localStorage
+                    const dadosSalvos = localStorage.getItem('dadosEmpresaTemp');
+                    if (!dadosSalvos) {
+                        alert('Nenhum dado de empresa encontrado. Refaça o cadastro.');
+                        window.location.href = 'cadastro_empresa.html';
+                        return;
                     }
-                } catch (err) {
-                    console.error(err);
-                    alert('Erro de conexão com o servidor.');
-                }
+
+                    const empresa = JSON.parse(dadosSalvos);
+                    const planoEscolhido = botao.dataset.plano; // vem do data-plano="Basico", por exemplo
+
+                    // Adiciona o plano escolhido
+                    empresa.plano = planoEscolhido;
+
+                    try {
+                        const response = await fetch('/cadastroEmpresa', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(empresa)
+                        });
+
+                        if (!response.ok) {
+                            const erro = await response.text();
+                            throw new Error(erro);
+                        }
+
+                        const resultado = await response.json();
+                        alert('✅ ' + resultado.message);
+
+                        // Limpa o localStorage depois de salvar
+                        localStorage.removeItem('dadosEmpresaTemp');
+                        window.location.href = 'login.html';
+
+                    } catch (err) {
+                        console.error('Erro ao salvar empresa:', err);
+                        alert('Erro ao salvar empresa: ' + err.message);
+                    }
+                });
             });
         });
     </script>

@@ -15,7 +15,7 @@
 
 <body>
 
-    <!-- Header -->
+    <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a href="index.html" class="navbar-brand logo">
@@ -30,8 +30,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0"></ul>
                 <form class="search-form d-flex w-100" role="search">
-                    <input class="form-control search-bar" type="search" placeholder="Buscar por nome, ramo..."
-                        aria-label="Search" name="q" />
+                    <input class="form-control search-bar" type="search" placeholder="Pesquisar por nome, descrição..."
+                        aria-label="Search" />
                 </form>
 
                 <div class="nav-btns d-none d-md-flex align-items-center">
@@ -49,40 +49,71 @@
                     </div>
                     <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                            style="color: white; font-size: 1.5rem;">&#9776;</a>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
+
                             <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
                             <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                            <li><a class="dropdown-item" href="contato.html">Contato</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="mobile-menu d-md-none mt-3 w-100">
-                    <div id="navbar-default-buttons-mobile" style="display: block;">
-                        <a href="login.html" class="d-block nav-mobile-link mb-2 text-center">Entrar</a>
-                        <a href="cadastro_empresa.html" class="d-block btn btn-cad-emp mb-2 w-100">Cadastrar Empresa</a>
+
+                    <div id="navbar-default-buttons-mobile" style="display: block;" class="px-2">
+                        <div class="d-grid gap-2">
+                            <a href="login.html" class="btn btn-outline-light">Entrar</a>
+                            <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                        </div>
                     </div>
+
                     <div id="navbar-user-links-mobile" style="display: none;">
+                        <div class="d-flex align-items-center mb-3 px-2">
+                            <img id="navbar-profile-pic-mobile" src="/img/IconeConta.png" alt="Perfil" width="40"
+                                height="40" class="rounded-circle me-3">
+                            <div>
+                                <span id="navbar-profile-name-mobile" class="text-white fw-bold d-block">Nome do
+                                    Usuário</span>
+                                <span id="navbar-profile-email-mobile" class="text-white-50 d-block"
+                                    style="font-size: 0.8rem;">email@exemplo.com</span>
+                            </div>
+                        </div>
+                        <ul id="navbar-dropdown-menu-mobile" class="list-group list-group-flush">
+                        </ul>
                     </div>
                     <hr style="border-top: 1px solid white;">
                     <div class="mobile-links text-center">
-                        <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
+                        <a class="d-block dropdown-item mb-2" href="contato.html">Contato</a>
                         <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
-                        <a class="d-block dropdown-item mb-2" href="#">Sobre</a>
+                        <a class="d-block dropdown-item mb-2" href="sobre.html">Sobre</a>
                     </div>
                 </div>
             </div>
-            <div class="mobile-hamburger d-md-none ms-auto">
-            </div>
+            <div class="mobile-hamburger d-md-none ms-auto"></div>
         </div>
     </nav>
-    <!-- Fim do header -->
+    <!--Fim do header-->
 
     <div class="raleway-fonte">
-        <div class="w-100 d-flex justify-content-center align-items-center">
-            <img src="/img/bannerHome.png" class="img-fluid w-100" alt="Fundo Home">
+        <div class="banner-gradiente">
+            <div class="container py-5">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 col-md-12 text-center mb-4 mb-lg-0">
+                        <img src="img/Metade1Banner.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 banner-texto">
+                        <h1>Quer saber quem fornece? Acesse o ForneX</h1>
+                        <p class="lead">Conectando quem vende com quem faz acontecer.</p>
+                        <a href="catalogo.html" class="btn btn-light btn-lg">Ver Catálogo</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
 
         <div class="p-5">
             <div class="row justify-content-center">
@@ -110,87 +141,60 @@
             </div>
 
             <div class="row">
-                <div id="carouselExampleCaptions" class="carousel slide">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-                            aria-label="Slide 5"></button>
-                    </div>
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-
-
-                            <div class="d-flex justify-content-center">
-                                <img src="img/AbrangenciaHome.png" class="d-block w-md-25" alt="...">
-                            </div>
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Abrangência</h5>
-                                <p>Fornecedores de todos os setores em todo o Brasil.</p>
-                            </div>
+                        <div class="carousel-item text-center active">
+                            <img src="img/AbrangenciaHome.png" class="d-block w-25 mx-auto" alt="...">
+                            <h1 class="text-light">
+                                Abrangência
+                            </h1>
+                            <p class="text-light">
+                                Fornecedores de todos os setores em todo o Brasil.
+                            </p>
                         </div>
-                        <div class="carousel-item">
-
-                            <div class="d-flex justify-content-center">
-                                <img src="img/OrcamentoRapidoHome.png" class="d-block w-md-25" alt="...">
-                            </div>
-
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Orçamento Rápido</h5>
-                                <p>Função exclusiva do nosso site.</p>
-                            </div>
+                        <div class="carousel-item text-center">
+                            <img src="img/OrcamentoRapidoHome.png" class="d-block w-25 mx-auto" alt="...">
+                            <h1 class="text-light">
+                                Orçamento Rápido
+                            </h1>
+                            <p class="text-light">
+                                Função exclusiva do nosso site.
+                            </p>
                         </div>
-                        <div class="carousel-item">
-
-                            <div class="d-flex justify-content-center">
-                                <img src="img/FiltrosDinamicosHome.png" class="d-block w-md-25" alt="...">
-                            </div>
-
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Filtros Dinâmicos</h5>
-                                <p>Para Tipo de Fornecedor, Localização e Avaliação.</p>
-                            </div>
+                        <div class="carousel-item text-center">
+                            <img src="img/FiltrosDinamicosHome.png" class="d-block w-25 mx-auto" alt="...">
+                            <h1 class="text-light">
+                                Filtros Dinâmicos
+                            </h1>
+                            <p class="text-light">
+                                Para tipo de fornecedor, localização e avaliação.
+                            </p>
                         </div>
-                        <div class="carousel-item">
-
-                            <div class="d-flex justify-content-center">
-                                <img src="img/TempoOtimizadoHome.png" class="d-block w-md-25" alt="...">
-                            </div>
-
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Tempo Otimizado</h5>
-                                <p>Nossa equipe está sempre pronta a ajudar.</p>
-                            </div>
+                        <div class="carousel-item text-center">
+                            <img src="img/OrcamentoRapidoHome.png" class="d-block w-25 mx-auto" alt="...">
+                            <h1 class="text-light">
+                                Tempo Otimizado
+                            </h1>
+                            <p class="text-light">
+                                Nossa equipe está sempre pronta a ajudar!
+                            </p>
                         </div>
-                        <div class="carousel-item">
-
-                            <div class="d-flex justify-content-center">
-                                <img src="img/AtendimentoVIPHome.png" class="d-block w-md-25" alt="...">
-                            </div>
-
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Atendimento VIP</h5>
-                                <p>Projetos personalizados de pesquisas de fornecedores.</p>
-                            </div>
+                        <div class="carousel-item text-center">
+                            <img src="img/AtendimentoVIPHome.png" class="d-block w-25 mx-auto" alt="...">
+                            <h1 class="text-light">
+                                Atendimento VIP
+                            </h1>
+                            <p class="text-light">
+                                Projetos personalizados de pesquisas de fornecedores.
+                            </p>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
@@ -253,6 +257,7 @@
                 <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
                 <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
                 <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="contato.html" class="nav-link px-2 text-body-secondary">Contato</a></li>
             </ul>
             <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>

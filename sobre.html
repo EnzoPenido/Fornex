@@ -24,49 +24,73 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
-                <span class="toggler-icon-bar"></span>
+                <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
+                    class="toggler-icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-
-                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0"></ul>
                 <form class="search-form d-flex w-100" role="search">
-                    <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" />
+                    <input class="form-control search-bar" type="search" placeholder="Pesquisar por nome, descrição..."
+                        aria-label="Search" />
                 </form>
 
-                <div class="nav-btns d-none d-md-flex">
-                    <a href="#" class="btn btn-link text-white text-decoration-none">Entrar</a>
-                    <a href="#" class="btn btn-cad-emp">Cadastrar Empresa</a>
-
-                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex">
+                <div class="nav-btns d-none d-md-flex align-items-center">
+                    <div id="navbar-default-buttons" style="display: flex;">
+                        <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
+                        <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                    </div>
+                    <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40" height="40"
+                                class="rounded-circle me-2">
+                        </a>
+                        <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"></ul>
+                    </div>
+                    <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
                         <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
-                            <li><a class="dropdown-item" href="index.html">Home</a></li>
+
+                            <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
+                            <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                            <li><a class="dropdown-item" href="contato.html">Contato</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="mobile-menu d-md-none mt-3">
-                    <a href="#" class="d-block nav-mobile-link mb-2">Entrar</a>
-                    <a href="#" class="d-block btn btn-cad-emp mb-2">Cadastrar Empresa</a>
-                    <div class="mobile-links">
-                        <a class="d-block dropdown-item" href="index.html">Home</a>
-                        <a class="d-block dropdown-item" href="sobre.html">Sobre</a>
+                <div class="mobile-menu d-md-none mt-3 w-100">
+
+                    <div id="navbar-default-buttons-mobile" style="display: block;" class="px-2">
+                        <div class="d-grid gap-2">
+                            <a href="login.html" class="btn btn-outline-light">Entrar</a>
+                            <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+                        </div>
+                    </div>
+
+                    <div id="navbar-user-links-mobile" style="display: none;">
+                        <div class="d-flex align-items-center mb-3 px-2">
+                            <img id="navbar-profile-pic-mobile" src="/img/IconeConta.png" alt="Perfil" width="40"
+                                height="40" class="rounded-circle me-3">
+                            <div>
+                                <span id="navbar-profile-name-mobile" class="text-white fw-bold d-block">Nome do
+                                    Usuário</span>
+                                <span id="navbar-profile-email-mobile" class="text-white-50 d-block"
+                                    style="font-size: 0.8rem;">email@exemplo.com</span>
+                            </div>
+                        </div>
+                        <ul id="navbar-dropdown-menu-mobile" class="list-group list-group-flush">
+                        </ul>
+                    </div>
+                    <hr style="border-top: 1px solid white;">
+                    <div class="mobile-links text-center">
+                        <a class="d-block dropdown-item mb-2" href="contato.html">Contato</a>
+                        <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
+                        <a class="d-block dropdown-item mb-2" href="sobre.html">Sobre</a>
                     </div>
                 </div>
             </div>
-
-            <div class="mobile-hamburger d-md-none">
-                <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="mobileHamburger"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileHamburger">
-                    <li><a class="dropdown-item" href="index.html">Home</a></li>
-                    <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
-                </ul>
-            </div>
+            <div class="mobile-hamburger d-md-none ms-auto"></div>
         </div>
     </nav>
     <!--Fim do header-->
@@ -153,15 +177,15 @@
     </div>
 
     <footer class="site-footer py-3 my-4">
+
         <div class="container">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+                <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+                <li class="nav-item"><a href="contato.html" class="nav-link px-2 text-body-secondary">Contato</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+            <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
         </div>
     </footer>
 

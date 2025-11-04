@@ -25,14 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * Função principal que orquestra o carregamento da página.
  */
 async function carregarPaginaCatalogo() {
-  // Carrega os 3 arquivos em paralelo
-  await Promise.all([
-    carregarFiltrosEstados(),
-    carregarFiltrosCategorias(),
-    carregarEmpresas()
-  ]);
-
-  // Só aplica os filtros depois que tudo for carregado
+  await carregarFiltrosEstados();
+  await carregarEmpresas();
+  await carregarFiltrosCategorias();
   aplicarTodosOsFiltros();
 }
 
@@ -44,7 +39,7 @@ async function carregarPaginaCatalogo() {
 async function carregarFiltrosEstados() {
   const container = document.getElementById('filtro-estado-lista');
   try {
-    const response = await fetch('/data/estados.json'); // Caminho OK
+    const response = await fetch('/data/estados.json');
     if (!response.ok) throw new Error('Falha ao carregar estados');
 
     const estados = await response.json();
@@ -53,7 +48,6 @@ async function carregarFiltrosEstados() {
     estados.forEach(estado => {
       const div = document.createElement('div');
       div.className = 'form-check';
-      // Correto: usa estado.nome
       div.innerHTML = `
         <input class="form-check-input filtro-estado" type="checkbox" value="${estado.nome}" id="estado-${estado.sigla}">
         <label class="form-check-label" for="estado-${estado.sigla}">
@@ -79,34 +73,40 @@ async function carregarFiltrosEstados() {
 }
 
 /**
- * Busca a lista de categorias e cria os checkboxes.
+ * GERA a lista de categorias dinamicamente a partir das empresas carregadas.
  */
 async function carregarFiltrosCategorias() {
   const container = document.getElementById('filtro-categoria-lista');
   try {
-    const response = await fetch('/data/categorias.json');
-    if (!response.ok) throw new Error('Falha ao carregar categorias');
+    const todasAsCategoriasComDuplicatas = [];
+    todasEmpresas.forEach(empresa => {
+      if (empresa.categorias && Array.isArray(empresa.categorias)) {
+        todasAsCategoriasComDuplicatas.push(...empresa.categorias);
+      }
+    });
 
-    const categorias = await response.json();
+    const categoriasUnicas = [...new Set(todasAsCategoriasComDuplicatas)];
+    categoriasUnicas.sort();
     container.innerHTML = '';
 
-    categorias.forEach(cat => {
+    if (categoriasUnicas.length === 0) {
+      container.innerHTML = '<small class="text-muted">Nenhuma categoria cadastrada.</small>';
+      return;
+    }
 
-      const catNome = cat.nome; // Pega o nome (ex: "Metalurgia")
-      const catId = catNome.replace(/\s/g, ''); // Agora o .replace() funciona na string 'catNome'
-
+    categoriasUnicas.forEach(catNome => {
+      const catId = catNome.replace(/\s/g, '');
       const div = document.createElement('div');
       div.className = 'form-check';
       div.innerHTML = `
         <input class="form-check-input filtro-categoria" type="checkbox" value="${catNome}" id="cat-${catId}">
-        <label class="form-check-label" for="cat-${catId}">
+        <label class="form-label" for="cat-${catId}">
           ${catNome}
         </label>
       `;
       container.appendChild(div);
     });
 
-    // Adiciona os listeners
     document.querySelectorAll('.filtro-categoria').forEach(checkbox => {
       checkbox.addEventListener('change', () => {
         filtrosAtivos.categorias = Array.from(document.querySelectorAll('.filtro-categoria:checked'))
@@ -116,8 +116,8 @@ async function carregarFiltrosCategorias() {
     });
 
   } catch (error) {
-    console.error(error);
-    container.innerHTML = '<small class="text-danger">Erro ao carregar categorias.</small>';
+    console.error("Erro ao processar categorias:", error);
+    container.innerHTML = '<small class="text-danger">Erro ao processar categorias.</small>';
   }
 }
 
@@ -129,7 +129,7 @@ async function carregarFiltrosCategorias() {
 async function carregarEmpresas() {
   const container = document.getElementById('catalogoEmpresas');
   try {
-    const response = await fetch('/data/empresas.json');
+    const response = await fetch('/data/empresas.json'); // Usando o novo empresas.json
     if (!response.ok) throw new Error('Falha ao carregar empresas');
 
     todasEmpresas = await response.json();
@@ -167,13 +167,12 @@ function adicionarListenersDeBusca() {
 }
 
 /**
- * O CÉREBRO DA PÁGINA:
  * Pega a lista 'todasEmpresas' e aplica os 'filtrosAtivos'.
  */
 function aplicarTodosOsFiltros() {
   let empresasFiltradas = [...todasEmpresas];
 
-  // 1. Filtro de Estado (localizacao)
+  // 1. Filtro de Estado
   if (filtrosAtivos.estados.length > 0) {
     empresasFiltradas = empresasFiltradas.filter(empresa =>
       empresa.localizacao && filtrosAtivos.estados.includes(empresa.localizacao)
@@ -187,7 +186,7 @@ function aplicarTodosOsFiltros() {
     );
   }
 
-  // 3. Filtro de Produto (input da sanfona)
+  // 3. Filtro de Produto
   if (filtrosAtivos.produto) {
     const termo = filtrosAtivos.produto.toLowerCase();
     empresasFiltradas = empresasFiltradas.filter(empresa =>
@@ -195,7 +194,7 @@ function aplicarTodosOsFiltros() {
     );
   }
 
-  // 4. Filtro Principal (input do navbar - busca por nome ou descrição)
+  // 4. Filtro Principal
   if (filtrosAtivos.termoPrincipal) {
     const termo = filtrosAtivos.termoPrincipal.toLowerCase();
     empresasFiltradas = empresasFiltradas.filter(empresa =>
@@ -204,35 +203,83 @@ function aplicarTodosOsFiltros() {
     );
   }
 
+  // 5. Renderiza o resultado
   renderizarEmpresas(empresasFiltradas);
 }
+
+/**
+ * Cria o HTML para as tags de categoria.
+ */
+function gerarTagsHtml(categorias) {
+  if (!categorias || !Array.isArray(categorias) || categorias.length === 0) {
+    return '';
+  }
+  const tags = categorias.map(cat =>
+    `<span class="card-category-tag">${cat}</span>`
+  ).join('');
+  return `<div class="card-category-container">${tags}</div>`;
+}
+
 
 /**
  * Desenha os cartões das empresas na tela.
  */
 function renderizarEmpresas(empresasParaRenderizar) {
   const container = document.getElementById('catalogoEmpresas');
-  container.innerHTML = '';
+
+  // ======================================================
+  //           NOVA LÓGICA DE ORDENAÇÃO (SORTEIO)
+  // ======================================================
+  // Coloca Premium no topo
+  empresasParaRenderizar.sort((a, b) => {
+    // Se 'a' é Premium e 'b' não é, 'a' vem antes (retorna -1).
+    if (a.plano === 'Premium' && b.plano !== 'Premium') {
+      return -1;
+    }
+    // Se 'b' é Premium e 'a' não é, 'b' vem antes (retorna 1).
+    if (a.plano !== 'Premium' && b.plano === 'Premium') {
+      return 1;
+    }
+    // Se ambos são iguais (ambos Premium ou ambos Comum), mantém a ordem.
+    return 0;
+  });
+  // ======================================================
+  //               FIM DA LÓGICA DE ORDENAÇÃO
+  // ======================================================
+
+
+  container.innerHTML = ''; // Limpa o container *depois* de ordenar
 
   if (empresasParaRenderizar.length === 0) {
-    container.innerHTML = `<p class="col-12 text-center text-muted mt-4">
-                            Nenhum fornecedor encontrado com os filtros selecionados.
-                           </p>`;
+    container.innerHTML = `<p class="col-12 text-center text-muted mt-4">Nenhum fornecedor encontrado com os filtros selecionados.</p>`;
     return;
   }
 
   empresasParaRenderizar.forEach(empresa => {
     const descricaoCurta = (empresa.descricao || '').substring(0, 100);
+    const tagsHtml = gerarTagsHtml(empresa.categorias);
+    // Verifica se a empresa é Premium
+    const isPremium = empresa.plano === 'Premium';
+
+    // Define a classe base e adiciona 'card-premium' se for o caso
+    const cardClasses = `card h-100 shadow-sm ${isPremium ? 'card-premium' : ''}`;
 
     const cartaoHTML = `
       <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <img src="${empresa.imagem || '/img/IconeConta.png'}" class="card-img-top" alt="${empresa.nome}" style="height: 200px; object-fit: cover;">
+        <div class="${cardClasses}">
+          <img src="${empresa.imagem || '/img/IconeConta.png'}" class="card-img-top" alt="${empresa.nome}" style="height: 200px; object-fit: fill;">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">${empresa.nome || 'Nome não informado'}</h5>
+            
+            ${tagsHtml}
+            
             <p class="card-text text-muted flex-grow-1">${descricaoCurta}...</p>
+            
             <small class="text-muted mb-2">
               <i class="bi bi-geo-alt-fill"></i> ${empresa.localizacao || 'Não informado'}
+            </small>
+            <small class="text-muted mb-2">
+              <i class="bi bi-telephone-fill"></i> ${empresa.telefone || 'Não informado'}
             </small>
           </div>
           <div class="card-footer bg-white border-0">
@@ -245,10 +292,6 @@ function renderizarEmpresas(empresasParaRenderizar) {
   });
 }
 
-
-/**
- * Correção de layout da sanfona (do nosso chat anterior)
- */
 function corrigirLayoutFiltroProduto() {
   const accordionBody = document.querySelector('#collapseProdutos .accordion-body');
   if (accordionBody) {

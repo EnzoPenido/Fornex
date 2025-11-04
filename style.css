@@ -66,8 +66,7 @@
 }
 
 .nav-btns .btn-link {
-    color: #ffffff;
-    padding: 0.25rem 0.5rem;
+    color: #ffffff;     
     font-size: 1rem;
 }
 
@@ -284,6 +283,12 @@
 /* ==========================
             HOME
 ========================== */
+
+.banner-gradiente {
+    background-image: linear-gradient(to right, #000, #50a7b6);
+    color: white;
+}
+
 .objetivo-son p span {
     color: #5a38bb;
     font-weight: 800;
@@ -419,6 +424,29 @@
     gap: 20px;
 }
 
+.card-category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.card-category-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #b4b4b4;
+    color: #374151;
+}
+
+.card-premium {
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
 /* ==========================
           EMPRESA
 ========================== */
@@ -434,4 +462,37 @@
     top: 1.5rem;
     right: 1.5rem;
     z-index: 10;
+}
+
+/* ==========================
+          PLANOS
+========================== */
+
+.ol-plano {
+    font-size: 1.2rem;
+}
+
+.plano {
+    background-color: rgb(0, 109, 126);
+    border-radius: 15px;
+    span {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    button{
+        border: none;
+        border-radius: 10px;
+        font-size: 2rem;
+    }
+}
+
+#premium{
+    color: rgba(255, 217, 0, 0.863);
+}
+
+#btn-premium{
+    background-color: rgba(255, 217, 0, 0.863);
 }

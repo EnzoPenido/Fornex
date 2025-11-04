@@ -1,112 +1,280 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "nome": "BioGarden",
     "email": "biogarden@gmail.com",
-    "descricao": "testestestestestestesteteste",
-    "senha": "123456789",
-    "endereco": "teste, 123",
-    "telefone": "11987654321",
-    "produtos": [
-      "uva",
-      "maçã",
-      "abacate",
-      "pera"
-    ],
-    "imagem": "/uploads/1/perfil.png",
-    "sobre": "TESTANDOOOOOOOOOOOOOOOOOOOO",
+    "cnpj": "12.345.678/9789-45",
+    "senha": "1234567",
+    "descricao": "Empresa voltada para o ramo da agricultura e tecnologia",
     "localizacao": "São Paulo",
+    "telefone": "(11) 9999-9999",
+    "sobre": "A biogarden é uma empresa de kaosfjakjlsflkszdvkjsdznvkndzlkgnzslkfnvlzbvlzbvjklzsbvlkznvjzsnçlvzlkvkzjcvlzxvblçzxkcmvçzlxkjcçvblzkjblxnvkb xkcvjn xçkcvjnbxçlcvkbnxçlcfijb çxfijgozdifjgçozj fgçoj dzçofgj çzodfjgçlzdj fgçzdifjg o",
+    "produtos": [
+      "Ferramentas",
+      "Sementes",
+      "Adubos"
+    ],
+    "imagem": "/uploads/empresas/1/perfil.png",
+    "plano": "Premium",
     "categorias": [
-      "Tecnologia",
       "Agricultura",
-      "Ferramentas"
+      "Tecnologia"
     ]
   },
   {
     "id": "2",
-    "nome": "BioGarden2",
-    "email": "biogarden2@gmail.com",
-    "cnpj": "32143214/432143",
-    "senha": "4321",
-    "descricao": "testestestestestestesteteste",
-    "endereco": "teste, 123",
-    "telefone": "11987654321",
-    "sobre": "TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+    "nome": "EngreTech",
+    "email": "EngreTech@gmail.com",
+    "cnpj": "12.345.678/9012-31",
+    "senha": "123321",
+    "descricao": "",
+    "localizacao": "Bahia",
+    "telefone": "(11) 9999-9876",
+    "sobre": "",
     "produtos": [
-      "uva",
-      "maçã",
-      "abacate",
-      "pera"
+      "Engrenagens",
+      "Martelo",
+      "Chave de fenda"
     ],
-    "imagem": "/uploads/2/perfil.png",
-    "localizacao": "undefined"
+    "imagem": "/uploads/empresas/2/perfil.png",
+    "plano": "Comum",
+    "categorias": [
+      "Tecnologia",
+      "Ferramentas",
+      "Maquinários"
+    ]
   },
   {
     "id": "3",
-    "nome": "Caio Ferrer",
-    "email": "caio@gmail.com",
-    "cnpj": "1234567891234",
-    "senha": "1234",
-    "descricao": "",
-    "endereco": "São Paulo",
-    "telefone": "11999999999",
-    "sobre": "",
-    "produtos": [],
-    "imagem": null,
-    "categorias": []
+    "nome": "EcoModa Têxteis",
+    "email": "contato@ecomoda.com",
+    "cnpj": "10.203.405/0001-11",
+    "senha": "ecopass",
+    "descricao": "Roupas ecológicas e sustentáveis.",
+    "localizacao": "Santa Catarina",
+    "telefone": "(41) 9888-8888",
+    "sobre": "Focados na moda consciente, utilizamos apenas materiais reciclados e orgânicos em nossa produção, visando menor impacto ambiental.",
+    "produtos": [
+      "Camisetas Orgânicas",
+      "Calças Jeans Recicladas",
+      "Acessórios"
+    ],
+    "imagem": "/uploads/empresas/3/perfil.png",
+    "plano": "Premium",
+    "categorias": [
+      "Moda",
+      "Sustentabilidade",
+      "Varejo"
+    ]
   },
   {
     "id": "4",
-    "nome": "EngreTech",
-    "email": "EngreTech@gmail.com",
-    "cnpj": "12345678978945",
-    "senha": "123456",
-    "descricao": "",
-    "endereco": "São Paulo",
-    "telefone": "119711975543",
+    "nome": "Gourmet Express",
+    "email": "gexpress@gmail.com",
+    "cnpj": "11.223.344/0001-22",
+    "senha": "food123",
+    "descricao": "Entrega de refeições gourmet.",
+    "localizacao": "Rio Grande do Sul",
+    "telefone": "(21) 9777-7777",
     "sobre": "",
-    "produtos": [],
-    "imagem": null,
-    "categorias": []
+    "produtos": [
+      "Marmitas Fit",
+      "Pratos Executivos",
+      "Sobremesas"
+    ],
+    "imagem": "/uploads/empresas/4/perfil.png",
+    "plano": "Comum",
+    "categorias": [
+      "Alimentício",
+      "Delivery",
+      "Restaurante"
+    ]
   },
   {
     "id": "5",
-    "nome": "eu",
-    "email": "eu@gmail.com",
-    "cnpj": "1234567890123",
-    "senha": "eu",
-    "descricao": "eu",
-    "endereco": "São Paulo",
-    "telefone": "11111111111",
-    "sobre": "eu",
+    "nome": "ProAtivo Consultoria",
+    "email": "proativo@consult.com",
+    "cnpj": "22.334.455/0001-33",
+    "senha": "pro987",
+    "descricao": "Consultoria empresarial e financeira.",
+    "localizacao": "Amapá",
+    "telefone": "(31) 9666-6666",
+    "sobre": "Ajudando sua empresa a crescer com planejamento estratégico e otimização de processos.",
     "produtos": [
-      "cadeira",
-      "mesa",
-      "madeira",
-      "borracha"
+      "Consultoria Financeira",
+      "Planejamento Estratégico",
+      "Gestão de Riscos"
     ],
-    "imagem": "/uploads/empresas/5/perfil.png",
+    "imagem": "/uploads/empresas/5/perfil.jpg",
+    "plano": "Premium",
     "categorias": [
-      "pessoas",
-      "crianças",
-      "adultos",
-      "idosos"
-    ],
-    "localizacao": "São Paulo"
+      "Serviços",
+      "Finanças",
+      "Consultoria"
+    ]
   },
   {
     "id": "6",
-    "nome": "Madeira",
-    "email": "caio4@gmail.com",
-    "cnpj": "1234567891209",
-    "senha": "1234",
-    "descricao": "",
-    "endereco": "São Paulo",
-    "telefone": "11999999999",
+    "nome": "CasaBuild Materiais",
+    "email": "casabuild@email.com",
+    "cnpj": "33.445.566/0001-44",
+    "senha": "build456",
+    "descricao": "Materiais de construção do básico ao acabamento.",
+    "localizacao": "Pernambuco",
+    "telefone": "(51) 9555-5555",
     "sobre": "",
-    "produtos": [],
-    "imagem": null,
+    "produtos": [
+      "Cimento",
+      "Tijolos",
+      "Tintas",
+      "Pisos"
+    ],
+    "imagem": "/uploads/empresas/6/perfil.png",
     "plano": "Comum",
-    "categorias": []
+    "categorias": [
+      "Construção",
+      "Varejo",
+      "Materiais"
+    ]
+  },
+  {
+    "id": "7",
+    "nome": "PetAmigo",
+    "email": "petamigo@pet.com",
+    "cnpj": "44.556.677/0001-55",
+    "senha": "meupet",
+    "descricao": "Tudo para o seu animal de estimação.",
+    "localizacao": "Sergipe",
+    "telefone": "(71) 9444-4444",
+    "sobre": "Amamos animais tanto quanto você. Oferecemos os melhores produtos e serviços para o seu companheiro.",
+    "produtos": [
+      "Ração",
+      "Brinquedos",
+      "Medicamentos"
+    ],
+    "imagem": "/uploads/empresas/7/perfil.jpg",
+    "plano": "Comum",
+    "categorias": [
+      "Pet Shop",
+      "Varejo",
+      "Animais"
+    ]
+  },
+  {
+    "id": "8",
+    "nome": "LogTrans Rápido",
+    "email": "logtrans@log.com.br",
+    "cnpj": "55.667.788/0001-66",
+    "senha": "log123",
+    "descricao": "Soluções em logística e transporte.",
+    "localizacao": "Tocantins",
+    "telefone": "(11) 9333-3333",
+    "sobre": "",
+    "produtos": [
+      "Transporte Rodoviário",
+      "Armazenagem",
+      "Logística Reversa"
+    ],
+    "imagem": "/uploads/empresas/8/perfil.jpg",
+    "plano": "Premium",
+    "categorias": [
+      "Logística",
+      "Transporte",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "9",
+    "nome": "Studio Criativo",
+    "email": "studio@criativo.com",
+    "cnpj": "66.778.899/0001-77",
+    "senha": "design9",
+    "descricao": "Agência de design e marketing digital.",
+    "localizacao": "São Paulo",
+    "telefone": "(81) 9222-2222",
+    "sobre": "Criamos marcas fortes e campanhas impactantes. Especialistas em branding e performance digital.",
+    "produtos": [
+      "Branding",
+      "Gestão de Mídias Sociais",
+      "Web Design"
+    ],
+    "imagem": "/uploads/empresas/9/perfil.jpg",
+    "plano": "Premium",
+    "categorias": [
+      "Marketing",
+      "Design",
+      "Publicidade"
+    ]
+  },
+  {
+    "id": "10",
+    "nome": "AutoParts Peças",
+    "email": "autoparts@pecas.com",
+    "cnpj": "77.889.900/0001-88",
+    "senha": "auto10",
+    "descricao": "Peças e acessórios automotivos.",
+    "localizacao": "Manaus",
+    "telefone": "(92) 9111-1111",
+    "sobre": "",
+    "produtos": [
+      "Pneus",
+      "Óleo de Motor",
+      "Filtros",
+      "Baterias"
+    ],
+    "imagem": "/uploads/empresas/10/perfil.jpg",
+    "plano": "Comum",
+    "categorias": [
+      "Automotivo",
+      "Peças",
+      "Varejo"
+    ]
+  },
+  {
+    "id": "11",
+    "nome": "Saúde Plena",
+    "email": "saudeplena@clinica.com",
+    "cnpj": "88.990.011/0001-99",
+    "senha": "saude987",
+    "descricao": "Clínica de bem-estar e fisioterapia.",
+    "localizacao": "Rondônia",
+    "telefone": "(62) 9000-0000",
+    "sobre": "Cuidando da sua saúde de forma integral, com foco em reabilitação e qualidade de vida.",
+    "produtos": [
+      "Fisioterapia",
+      "Nutrição",
+      "Pilates"
+    ],
+    "imagem": "/uploads/empresas/11/perfil.png",
+    "plano": "Premium",
+    "categorias": [
+      "Saúde",
+      "Bem-estar",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "12",
+    "nome": "InfraData",
+    "email": "infradata@data.com",
+    "cnpj": "99.001.122/0001-00",
+    "senha": "data12",
+    "descricao": "Soluções de infraestrutura e cloud.",
+    "localizacao": "São Paulo",
+    "telefone": "(11) 9123-4567",
+    "sobre": "Especialistas em data centers, segurança de rede e serviços gerenciados em nuvem.",
+    "produtos": [
+      "Servidores Cloud",
+      "Backup em Nuvem",
+      "Segurança de TI"
+    ],
+    "imagem": "/uploads/empresas/12/perfil.jpg",
+    "plano": "Premium",
+    "categorias": [
+      "Tecnologia",
+      "TI",
+      "Infraestrutura",
+      "Cloud"
+    ]
   }
 ]

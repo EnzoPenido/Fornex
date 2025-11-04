@@ -17,9 +17,9 @@
             nome = '',
             email = '',
             senha = '',
-            ConfSenha = '',
+            confsenha = '',
             cnpj = '',
-            endereco = '',
+            localizacao = '',
             telefone = '',
             descricao = '',
             sobre = '',
@@ -27,11 +27,11 @@
             plano = ''
         } = req.body || {};
 
-        if (!nome || !email || !senha || !ConfSenha || !cnpj) {
+        if (!nome || !email || !senha || !confsenha || !cnpj) {
             return res.status(400).send('Preencha os campos obrigatórios: Nome, Email, Senha, Confirmar Senha e CNPJ.');
         }
 
-        if (senha !== ConfSenha) {
+        if (senha !== confsenha) {
             return res.status(400).send('As senhas não coincidem!');
         }
 
@@ -68,7 +68,7 @@
                 cnpj,
                 senha,
                 descricao,
-                endereco,
+                localizacao,
                 telefone,
                 sobre,
                 produtos: Array.isArray(produtos) ? produtos : produtos.split(',').map(p => p.trim()),

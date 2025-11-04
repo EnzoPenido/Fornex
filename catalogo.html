@@ -12,142 +12,144 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a href="index.html" class="navbar-brand logo">
-        <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
-          class="toggler-icon-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0"></ul>
-        <form class="search-form d-flex w-100" role="search">
-          <input class="form-control search-bar" type="search" placeholder="Pesquisar por nome, descrição..."
-            aria-label="Search" />
-        </form>
-        <div class="nav-btns d-none d-md-flex align-items-center">
-          <div id="navbar-default-buttons" style="display: flex;">
-            <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
-            <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+  <div class="min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand logo">
+          <img src="/img/logo.png" alt="ForneX Home" class="d-block w-100">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-icon-bar"></span><span class="toggler-icon-bar"></span><span
+            class="toggler-icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0"></ul>
+          <form class="search-form d-flex w-100" role="search">
+            <input class="form-control search-bar" type="search" placeholder="Pesquisar por nome, descrição..."
+              aria-label="Search" />
+          </form>
+          <div class="nav-btns d-none d-md-flex align-items-center">
+            <div id="navbar-default-buttons" style="display: flex;">
+              <a href="login.html" class="btn btn-link text-white text-decoration-none">Entrar</a>
+              <a href="cadastro_empresa.html" class="btn btn-cad-emp">Cadastrar Empresa</a>
+            </div>
+            <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40" height="40"
+                  class="rounded-circle me-2">
+              </a>
+              <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"></ul>
+            </div>
+            <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
+              <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">&#9776;</a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
+                <li><a class="dropdown-item" href="index.html">Home</a></li>
+                <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+                <li><a class="dropdown-item" href="contato.html">Contato</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="dropdown" id="navbar-user-dropdown" style="display: none;">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <img id="navbar-profile-pic" src="/img/IconeConta.png" alt="Perfil" width="40" height="40"
-                class="rounded-circle me-2">
-            </a>
-            <ul id="navbar-dropdown-menu" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"></ul>
-          </div>
-          <div class="hamburger-dropdown dropdown d-none d-md-inline-flex ms-2">
-            <a class="nav-link dropdown-toggle no-caret hamburger-toggle" href="#" id="hamburgerMenu" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 1.5rem;">&#9776;</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="hamburgerMenu">
-              <li><a class="dropdown-item" href="index.html">Home</a></li>
-              <li><a class="dropdown-item" href="catalogo.html">Catálogo</a></li>
-              <li><a class="dropdown-item" href="#">Sobre</a></li>
-            </ul>
+          <div class="mobile-menu d-md-none mt-3 w-100">
+            <div id="navbar-default-buttons-mobile" style="display: block;">
+              <a href="login.html" class="d-block nav-mobile-link mb-2 text-center">Entrar</a>
+              <a href="cadastro_empresa.html" class="d-block btn btn-cad-emp mb-2 w-100">Cadastrar Empresa</a>
+            </div>
+            <div id="navbar-user-links-mobile" style="display: none;"></div>
+            <hr style="border-top: 1px solid white;">
+            <div class="mobile-links text-center">
+              <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
+              <a class="d-block dropdown-item mb-2" href="sobre.html">Sobre</a>
+              <a class="d-block dropdown-item mb-2" href="contato.html">Contato</a>
+            </div>
           </div>
         </div>
-        <div class="mobile-menu d-md-none mt-3 w-100">
-          <div id="navbar-default-buttons-mobile" style="display: block;">
-            <a href="login.html" class="d-block nav-mobile-link mb-2 text-center">Entrar</a>
-            <a href="cadastro_empresa.html" class="d-block btn btn-cad-emp mb-2 w-100">Cadastrar Empresa</a>
-          </div>
-          <div id="navbar-user-links-mobile" style="display: none;"></div>
-          <hr style="border-top: 1px solid white;">
-          <div class="mobile-links text-center">
-            <a class="d-block dropdown-item mb-2" href="index.html">Home</a>
-            <a class="d-block dropdown-item mb-2" href="catalogo.html">Catálogo</a>
-            <a class="d-block dropdown-item mb-2" href="#">Sobre</a>
-          </div>
-        </div>
+        <div class="mobile-hamburger d-md-none ms-auto"></div>
       </div>
-      <div class="mobile-hamburger d-md-none ms-auto"></div>
-    </div>
-  </nav>
-  <div class="container my-5">
-    <h1 class="mb-4">Catálogo de Fornecedores</h1>
+    </nav>
+    <div class="container my-5">
+      <h1 class="mb-4">Catálogo de Fornecedores</h1>
 
-    <div class="row">
+      <div class="row">
 
-      <div class="col-lg-3 mb-4">
-        <h4>Filtros <i class="bi bi-filter"></i></h4>
+        <div class="col-lg-3 mb-4">
+          <h4>Filtros <i class="bi bi-filter"></i></h4>
 
-        <div class="accordion" id="accordionFiltros">
+          <div class="accordion" id="accordionFiltros">
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingLocal">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseLocal" aria-expanded="false" aria-controls="collapseLocal">
-                Localização (Estado)
-              </button>
-            </h2>
-            <div id="collapseLocal" class="accordion-collapse collapse" aria-labelledby="headingLocal"
-              data-bs-parent="#accordionFiltros">
-              <div class="accordion-body">
-                <div id="filtro-estado-lista" style="max-height: 200px; overflow-y: auto;">
-                  <small class="text-muted">Carregando estados...</small>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingLocal">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseLocal" aria-expanded="false" aria-controls="collapseLocal">
+                  Localização (Estado)
+                </button>
+              </h2>
+              <div id="collapseLocal" class="accordion-collapse collapse" aria-labelledby="headingLocal"
+                data-bs-parent="#accordionFiltros">
+                <div class="accordion-body">
+                  <div id="filtro-estado-lista" style="max-height: 200px; overflow-y: auto;">
+                    <small class="text-muted">Carregando estados...</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingRamo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseRamo" aria-expanded="false" aria-controls="collapseRamo">
-                Categoria
-              </button>
-            </h2>
-            <div id="collapseRamo" class="accordion-collapse collapse" aria-labelledby="headingRamo"
-              data-bs-parent="#accordionFiltros">
-              <div class="accordion-body">
-                <div id="filtro-categoria-lista" style="max-height: 200px; overflow-y: auto;">
-                  <small class="text-muted">Carregando categorias...</small>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingRamo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseRamo" aria-expanded="false" aria-controls="collapseRamo">
+                  Categoria
+                </button>
+              </h2>
+              <div id="collapseRamo" class="accordion-collapse collapse" aria-labelledby="headingRamo"
+                data-bs-parent="#accordionFiltros">
+                <div class="accordion-body">
+                  <div id="filtro-categoria-lista" style="max-height: 200px; overflow-y: auto;">
+                    <small class="text-muted">Carregando categorias...</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingProdutos">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseProdutos" aria-expanded="false" aria-controls="collapseProdutos">
-                Produtos
-              </button>
-            </h2>
-            <div id="collapseProdutos" class="accordion-collapse collapse" aria-labelledby="headingProdutos"
-              data-bs-parent="#accordionFiltros">
-              <div class="accordion-body">
-                <input class="form-control search-bar" type="search" placeholder="Buscar por nome, ramo..."
-                  aria-label="Search" name="q" />
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingProdutos">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseProdutos" aria-expanded="false" aria-controls="collapseProdutos">
+                  Produtos
+                </button>
+              </h2>
+              <div id="collapseProdutos" class="accordion-collapse collapse" aria-labelledby="headingProdutos"
+                data-bs-parent="#accordionFiltros">
+                <div class="accordion-body">
+                  <input class="form-control search-bar" type="search" placeholder="Buscar produto" aria-label="Search"
+                    name="q" />
+                </div>
               </div>
             </div>
+
           </div>
-
         </div>
-      </div>
 
-      <div class="col-lg-9">
-        <div class="row" id="catalogoEmpresas">
-          <p class="col-12 text-center text-muted mt-4">Carregando fornecedores...</p>
+        <div class="col-lg-9">
+          <div class="row" id="catalogoEmpresas">
+            <p class="col-12 text-center text-muted mt-4">Carregando fornecedores...</p>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-
 
   <footer class="site-footer py-3 my-4">
 
     <div class="container">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
+        <li class="nav-item"><a href="sobre.html" class="nav-link px-2 text-body-secondary">Sobre nós</a></li>
         <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 text-body-secondary">Catálogo</a></li>
+        <li class="nav-item"><a href="contato.html" class="nav-link px-2 text-body-secondary">Contato</a></li>
       </ul>
       <p class="text-center text-body-secondary">© 2025 ForneX, Inc</p>
     </div>
@@ -158,6 +160,8 @@
     crossorigin="anonymous"></script>
   <script src="/frontEnd/navbar.js"></script>
   <script src="/frontEnd/catalogo_front.js"></script>
+
+
 </body>
 
 </html>

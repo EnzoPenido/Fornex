@@ -10,47 +10,42 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, '[]');
 }
 
-// Exibe página de cadastro
+// GET → retorna o HTML (opcional se você serve via pasta /public)
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../cadastro.html'));
+  res.sendFile(path.join(__dirname, '../public/cadastro.html'));
 });
 
-// Recebe dados do formulário
+// POST → salva o cadastro
 router.post('/', (req, res) => {
-  const { nome, email, senha, ConfSenha, cpf, telefone } = req.body;
+  const { nome, email, senha, confsenha, cpf, telefone } = req.body;
 
-  if (!nome || !email || !senha || !ConfSenha) {
-    return res.status(400).send('Preencha todos os campos obrigatórios!');
+  if (!nome || !email || !senha || !confsenha) {
+    return res.status(400).json({ message: 'Preencha todos os campos obrigatórios!' });
   }
 
-  if (senha !== ConfSenha) {
-    return res.status(400).send('As senhas não coincidem!');
+  if (senha !== confsenha) {
+    return res.status(400).json({ message: 'As senhas não coincidem!' });
   }
 
   fs.readFile(dataPath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).send('Erro ao ler arquivo.');
-    }
+    if (err) return res.status(500).json({ message: 'Erro ao ler arquivo.' });
 
     let usuarios = [];
-    if (data.trim() !== '') {
-      try {
-        usuarios = JSON.parse(data);
-      } catch {
-        usuarios = [];
-      }
+    try {
+      usuarios = JSON.parse(data || '[]');
+    } catch {
+      usuarios = [];
     }
+
     if (usuarios.find(u => u.email === email)) {
-      return res.status(400).send('Este e-mail já está cadastrado!');
+      return res.status(400).json({ message: 'Este e-mail já está cadastrado!' });
     }
 
     usuarios.push({ nome, email, senha, cpf, telefone });
 
     fs.writeFile(dataPath, JSON.stringify(usuarios, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Erro ao salvar usuário.');
-      }
-      res.redirect('/login.html');
+      if (err) return res.status(500).json({ message: 'Erro ao salvar usuário.' });
+      res.json({ message: 'Usuário cadastrado com sucesso!' });
     });
   });
 });
