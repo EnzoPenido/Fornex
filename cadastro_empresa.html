@@ -23,20 +23,28 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-11 form-container py-3">
                 <h2 class="text-center">Cadastrar Empresa</h2>
-                <form method="POST" action="/cadastroEmpresa" id="FormCadastroEmpresa">
+
+                <form id="FormCadastroEmpresa">
                     <div class="mb-3">
                         <label class="form-label">Nome da empresa:</label>
-                        <input type="text" name="nome" class="form-control" placeholder="">
+                        <input type="text" name="nome" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Endereço de email:</label>
-                        <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com">
+                        <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Localização (Estado):</label>
+                        <select name="localizacao" id="select-estado" class="form-select" required disabled>
+                            <option value="" selected>Carregando estados...</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">CNPJ:</label>
-                        <input type="text" name="cnpj" class="form-control" placeholder="00.000.000/001-00">
+                        <input type="text" name="cnpj" class="form-control" placeholder="00.000.000/0000-00" required>
                     </div>
 
                     <div class="row align-items-center mb-3">
@@ -47,23 +55,16 @@
                             <label class="col-form-label">Confirmar senha:</label>
                         </div>
                         <div class="col-6">
-                            <input type="password" name="senha" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                            <input type="password" name="senha" class="form-control" required>
                         </div>
                         <div class="col-6">
-                            <input type="password" name="ConfSenha" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                            <input type="password" name="ConfSenha" class="form-control" required>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Endereço:</label>
-                        <input type="text" name="endereco" class="form-control" placeholder="Cidade, Estado">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Telefone:</label>
-                        <input type="text" name="telefone" class="form-control" placeholder="(**) *****-****">
+                        <input type="text" name="telefone" class="form-control" placeholder="(00) 00000-0000" required>
                     </div>
 
                     <div class="mt-4 d-flex flex-column align-items-end">
@@ -80,27 +81,89 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/imask"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            // --- Aplicação das Máscaras ---
+            const cnpjInput = document.querySelector('input[name="cnpj"]');
+            const cnpjMask = IMask(cnpjInput, { mask: '00.000.000/0000-00' });
+
+            const telefoneInput = document.querySelector('input[name="telefone"]');
+            const telefoneMask = IMask(telefoneInput, {
+                mask: [
+                    { mask: '(00) 0000-0000' }, // Fixo
+                    { mask: '(00) 00000-0000' } // Celular
+                ]
+            });
+
+            /**
+             * Busca os estados na API e preenche o <select>
+             */
+            async function carregarEstados() {
+                const selectEstado = document.getElementById('select-estado');
+                try {
+                    const response = await fetch('./data/estados.json');
+
+                    if (!response.ok) {
+                        throw new Error(`Arquivo não encontrado (${response.status})`);
+                    }
+
+                    const estados = await response.json();
+
+                    // Limpa o select ("Carregando...")
+                    selectEstado.innerHTML = '';
+                    selectEstado.add(new Option('Selecione um estado', ''));
+                    estados.forEach(estado => {
+                        selectEstado.add(new Option(estado.nome, estado.nome));
+                    });
+
+                    // Habilita o select
+                    selectEstado.disabled = false;
+                    selectEstado.value = ""; // Deixa "Selecione..." ativo
+
+                } catch (error) {
+                    console.error("Erro ao carregar estados:", error);
+                    selectEstado.innerHTML = '';
+                    selectEstado.add(new Option('Erro ao carregar lista', ''));
+                }
+            }
+
+            // Chama a função para carregar os estados
+            await carregarEstados();
+
+
+            // --- Gerenciador de Submit do Formulário ---
             const formCadastro = document.querySelector('#FormCadastroEmpresa');
-
             formCadastro.addEventListener('submit', (e) => {
-                e.preventDefault();
+                e.preventDefault(); // Impede o recarregamento
 
+                // Validação de Senha
+                const senha = formCadastro.senha.value;
+                const confSenha = formCadastro.ConfSenha.value;
+
+                if (senha !== confSenha) {
+                    alert('As senhas não coincidem!');
+                    return;
+                }
+
+                // Coleta os dados
                 const dadosCadastro = {
                     nome: formCadastro.nome.value,
                     email: formCadastro.email.value,
-                    senha: formCadastro.senha.value,
-                    ConfSenha: formCadastro.senha.value,
-                    endereco: formCadastro.endereco.value,
-                    cnpj: formCadastro.cnpj.value,
-                    telefone: formCadastro.telefone.value
+                    localizacao: formCadastro.localizacao.value,
+                    cnpj: cnpjMask.unmaskedValue,
+                    telefone: telefoneMask.unmaskedValue,
+                    senha: senha
                 };
 
-                // Guarda temporariamente no localStorage
-                localStorage.setItem('dadosEmpresaTemp', JSON.stringify(dadosCadastro));
+                if (!dadosCadastro.localizacao) {
+                    alert('Por favor, selecione uma localização (estado).');
+                    return;
+                }
 
-                // Redireciona para a página de planos
+                localStorage.setItem('dadosEmpresaTemp', JSON.stringify(dadosCadastro));
                 window.location.href = 'planos.html';
             });
         });

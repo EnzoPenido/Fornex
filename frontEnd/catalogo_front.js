@@ -1,254 +1,258 @@
 // ===============================================
-//         SCRIPT DA PÁGINA DO CATÁLOGO (vFinal com Filtros e Busca)
+//         SCRIPT DA PÁGINA DE CATÁLOGO
 // ===============================================
 
-let todasEmpresas = []; // Guarda a lista completa para filtrar no frontend
+// Variável global para guardar todas as empresas.
+let todasEmpresas = [];
 
-// Roda quando o HTML da página do catálogo carregar
-document.addEventListener('DOMContentLoaded', async () => {
-  // Ler termo de busca da URL (se existir)
-  const params = new URLSearchParams(window.location.search);
-  const termoBuscaURL = params.get('q'); // 'q' é o 'name' do input da navbar
+// Objeto para guardar o estado atual dos filtros
+let filtrosAtivos = {
+  estados: [],
+  categorias: [],
+  produto: "",
+  termoPrincipal: ""
+};
 
-  // Preenche a barra de busca da navbar se houver termo na URL
-  const inputBuscaGeral = document.querySelector('.search-bar');
-  if (inputBuscaGeral && termoBuscaURL) {
-    inputBuscaGeral.value = termoBuscaURL;
-  }
-
-  // Carrega os dados (empresas e filtros)
-  await carregarEmpresas(); // Carrega TODAS as empresas primeiro
-  await carregarEstados();
-  await carregarCategorias();
-  adicionarListenersFiltros(); // Adiciona listeners DEPOIS de carregar tudo
-
-  // Aplica os filtros iniciais (incluindo o da URL, se houver)
-  aplicarFiltros();
+// --- PONTO DE PARTIDA: Carrega tudo quando a página abre ---
+document.addEventListener('DOMContentLoaded', () => {
+  corrigirLayoutFiltroProduto();
+  carregarPaginaCatalogo();
+  adicionarListenersDeBusca();
 });
 
+
 /**
- * Carrega TODAS as empresas da API e guarda na variável global.
- * Chama renderizarEmpresas para exibir.
+ * Função principal que orquestra o carregamento da página.
  */
-async function carregarEmpresas() {
-  const container = document.getElementById('catalogoEmpresas');
-  if (!container) { console.error("Elemento 'catalogoEmpresas' não encontrado!"); return; }
-  container.innerHTML = '<p class="col-12 text-center text-muted mt-4">Carregando fornecedores...</p>'; // Feedback inicial
+async function carregarPaginaCatalogo() {
+  // Carrega os 3 arquivos em paralelo
+  await Promise.all([
+    carregarFiltrosEstados(),
+    carregarFiltrosCategorias(),
+    carregarEmpresas()
+  ]);
 
-  try {
-    const resposta = await fetch('/api/empresas');
-    if (!resposta.ok) throw new Error(`Erro HTTP: ${resposta.status}`);
-    todasEmpresas = await resposta.json(); // Guarda na variável global
-
-    // Renderiza a lista completa inicialmente (ou filtrada se houver termo na URL)
-    // A chamada aplicarFiltros() no DOMContentLoaded cuidará da filtragem inicial
-    // renderizarEmpresas(todasEmpresas); // Não precisa renderizar aqui, aplicarFiltros fará isso
-
-  } catch (erro) {
-    console.error('Erro ao carregar catálogo:', erro);
-    if (container) container.innerHTML = `<p class="col-12 text-center text-danger mt-4">Não foi possível carregar o catálogo. Tente novamente mais tarde.</p>`;
-    todasEmpresas = []; // Limpa em caso de erro
-  }
+  // Só aplica os filtros depois que tudo for carregado
+  aplicarTodosOsFiltros();
 }
 
-/**
- * Renderiza a lista de empresas fornecida no container HTML.
- * @param {Array} empresasParaRenderizar - Array de objetos de empresa.
- */
-function renderizarEmpresas(empresasParaRenderizar) {
-  const container = document.getElementById('catalogoEmpresas');
-  if (!container) return;
-  container.innerHTML = ''; // Limpa
-
-  if (!empresasParaRenderizar || empresasParaRenderizar.length === 0) {
-    container.innerHTML = '<p class="col-12 text-center text-muted mt-4">Nenhum fornecedor encontrado com os filtros selecionados.</p>';
-    return;
-  }
-
-  empresasParaRenderizar.forEach(empresa => {
-    const card = document.createElement('div');
-    card.className = 'col-md-6 col-lg-4 mb-4';
-    card.innerHTML = `
-          <div class="card h-100 shadow-sm">
-            <img src="${empresa.imagem || '/img/IconeConta.png'}"
-                 class="card-img-top" alt="Logo ${empresa.nome || 'Empresa'}"
-                 style="height: 200px; object-fit: contain; padding: 1rem;">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${empresa.nome || 'Nome não disponível'}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">${empresa.descricao || ''}</h6>
-              <p class="card-text text-truncate">${empresa.sobre || ''}</p>
-              <a href="empresa.html?id=${empresa.id}" class="btn btn-primary mt-auto">Ver mais</a>
-            </div>
-          </div>`;
-    container.appendChild(card);
-  });
-}
-
+// --- 1. FUNÇÕES DE CARREGAMENTO DE FILTROS ---
 
 /**
- * Carrega os estados do JSON e popula os checkboxes no filtro.
+ * Busca a lista de estados e cria os checkboxes.
  */
-async function carregarEstados() {
-  const listaContainer = document.getElementById('filtro-estado-lista');
-  if (!listaContainer) { console.warn("Elemento 'filtro-estado-lista' não encontrado."); return; }
-  listaContainer.innerHTML = '<small class="text-muted">Carregando...</small>'; // Feedback
-
+async function carregarFiltrosEstados() {
+  const container = document.getElementById('filtro-estado-lista');
   try {
-    const response = await fetch('/data/estados.json');
-    if (!response.ok) throw new Error('Falha ao carregar estados.json');
+    const response = await fetch('/data/estados.json'); // Caminho OK
+    if (!response.ok) throw new Error('Falha ao carregar estados');
+
     const estados = await response.json();
-    estados.sort((a, b) => a.nome.localeCompare(b.nome));
-    listaContainer.innerHTML = ''; // Limpa
+    container.innerHTML = '';
 
     estados.forEach(estado => {
       const div = document.createElement('div');
       div.className = 'form-check';
-      const estadoIdSeguro = `check-estado-${estado.sigla}`;
+      // Correto: usa estado.nome
       div.innerHTML = `
-                <input class="form-check-input filtro-estado-check" type="checkbox" value="${estado.sigla}" id="${estadoIdSeguro}" data-nome="${estado.nome}">
-                <label class="form-check-label" for="${estadoIdSeguro}">
-                    ${estado.nome} (${estado.sigla})
-                </label>`;
-      listaContainer.appendChild(div);
+        <input class="form-check-input filtro-estado" type="checkbox" value="${estado.nome}" id="estado-${estado.sigla}">
+        <label class="form-check-label" for="estado-${estado.sigla}">
+          ${estado.nome}
+        </label>
+      `;
+      container.appendChild(div);
     });
+
+    // Adiciona os listeners
+    document.querySelectorAll('.filtro-estado').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        filtrosAtivos.estados = Array.from(document.querySelectorAll('.filtro-estado:checked'))
+          .map(cb => cb.value);
+        aplicarTodosOsFiltros();
+      });
+    });
+
   } catch (error) {
-    console.error("Erro ao carregar ou configurar estados:", error);
-    if (listaContainer) listaContainer.innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
+    console.error(error);
+    container.innerHTML = '<small class="text-danger">Erro ao carregar estados.</small>';
   }
 }
 
 /**
- * Carrega as categorias do JSON e popula os checkboxes no filtro.
+ * Busca a lista de categorias e cria os checkboxes.
  */
-async function carregarCategorias() {
-  const listaContainer = document.getElementById('filtro-categoria-lista');
-  if (!listaContainer) { console.warn("Elemento 'filtro-categoria-lista' não encontrado."); return; }
-  listaContainer.innerHTML = '<small class="text-muted">Carregando...</small>'; // Feedback
-
+async function carregarFiltrosCategorias() {
+  const container = document.getElementById('filtro-categoria-lista');
   try {
     const response = await fetch('/data/categorias.json');
-    if (!response.ok) throw new Error('Falha ao carregar categorias.json');
-    const categorias = await response.json();
-    categorias.sort((a, b) => a.nome.localeCompare(b.nome));
-    listaContainer.innerHTML = ''; // Limpa
+    if (!response.ok) throw new Error('Falha ao carregar categorias');
 
-    categorias.forEach(categoria => {
+    const categorias = await response.json();
+    container.innerHTML = '';
+
+    categorias.forEach(cat => {
+
+      const catNome = cat.nome; // Pega o nome (ex: "Metalurgia")
+      const catId = catNome.replace(/\s/g, ''); // Agora o .replace() funciona na string 'catNome'
+
       const div = document.createElement('div');
       div.className = 'form-check';
-      const categoriaIdSeguro = `check-categoria-${categoria.id}`; // Usa o ID único da categoria
       div.innerHTML = `
-                <input class="form-check-input filtro-categoria-check" type="checkbox" value="${categoria.id}" id="${categoriaIdSeguro}" data-nome="${categoria.nome}"> {/* Value agora é o ID */}
-                <label class="form-check-label" for="${categoriaIdSeguro}">
-                    ${categoria.nome}
-                </label>`;
-      listaContainer.appendChild(div);
+        <input class="form-check-input filtro-categoria" type="checkbox" value="${catNome}" id="cat-${catId}">
+        <label class="form-check-label" for="cat-${catId}">
+          ${catNome}
+        </label>
+      `;
+      container.appendChild(div);
     });
+
+    // Adiciona os listeners
+    document.querySelectorAll('.filtro-categoria').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        filtrosAtivos.categorias = Array.from(document.querySelectorAll('.filtro-categoria:checked'))
+          .map(cb => cb.value);
+        aplicarTodosOsFiltros();
+      });
+    });
+
   } catch (error) {
-    console.error("Erro ao carregar ou configurar categorias:", error);
-    if (listaContainer) listaContainer.innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
+    console.error(error);
+    container.innerHTML = '<small class="text-danger">Erro ao carregar categorias.</small>';
+  }
+}
+
+// --- 2. FUNÇÃO DE CARREGAMENTO DE EMPRESAS ---
+
+/**
+ * Busca a lista de TODAS as empresas e guarda na variável global.
+ */
+async function carregarEmpresas() {
+  const container = document.getElementById('catalogoEmpresas');
+  try {
+    const response = await fetch('/data/empresas.json');
+    if (!response.ok) throw new Error('Falha ao carregar empresas');
+
+    todasEmpresas = await response.json();
+
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = `<p class="col-12 text-center text-danger mt-4">
+                            Erro grave ao carregar fornecedores. Tente novamente mais tarde.
+                           </p>`;
+  }
+}
+
+// --- 3. FUNÇÕES DE FILTRO E RENDERIZAÇÃO ---
+
+/**
+ * Adiciona listeners nas barras de busca (a do navbar e a da sanfona)
+ */
+function adicionarListenersDeBusca() {
+  const buscaPrincipal = document.querySelector('nav .search-bar');
+  const buscaProduto = document.querySelector('#collapseProdutos .search-bar');
+
+  if (buscaPrincipal) {
+    buscaPrincipal.addEventListener('input', (e) => {
+      filtrosAtivos.termoPrincipal = e.target.value.trim();
+      aplicarTodosOsFiltros();
+    });
+  }
+
+  if (buscaProduto) {
+    buscaProduto.addEventListener('input', (e) => {
+      filtrosAtivos.produto = e.target.value.trim();
+      aplicarTodosOsFiltros();
+    });
   }
 }
 
 /**
- * Adiciona listeners aos inputs/checkboxes dos filtros.
+ * O CÉREBRO DA PÁGINA:
+ * Pega a lista 'todasEmpresas' e aplica os 'filtrosAtivos'.
  */
-function adicionarListenersFiltros() {
-  // Listener para checkboxes de ESTADO
-  const containerEstados = document.getElementById('filtro-estado-lista');
-  if (containerEstados) {
-    containerEstados.addEventListener('change', (event) => {
-      if (event.target.classList.contains('filtro-estado-check')) {
-        aplicarFiltros(); // Chama a função principal de filtro
-      }
-    });
+function aplicarTodosOsFiltros() {
+  let empresasFiltradas = [...todasEmpresas];
+
+  // 1. Filtro de Estado (localizacao)
+  if (filtrosAtivos.estados.length > 0) {
+    empresasFiltradas = empresasFiltradas.filter(empresa =>
+      empresa.localizacao && filtrosAtivos.estados.includes(empresa.localizacao)
+    );
   }
 
-  // Listener para checkboxes de CATEGORIA
-  const containerCategorias = document.getElementById('filtro-categoria-lista');
-  if (containerCategorias) {
-    containerCategorias.addEventListener('change', (event) => {
-      if (event.target.classList.contains('filtro-categoria-check')) {
-        aplicarFiltros(); // Chama a função principal de filtro
-      }
-    });
+  // 2. Filtro de Categoria
+  if (filtrosAtivos.categorias.length > 0) {
+    empresasFiltradas = empresasFiltradas.filter(empresa =>
+      empresa.categorias && empresa.categorias.some(cat => filtrosAtivos.categorias.includes(cat))
+    );
   }
 
-  // Listener para input de PRODUTO
-  const inputProduto = document.getElementById('filtro-produto-input');
-  if (inputProduto) {
-    // Usamos 'input' para filtrar a cada tecla digitada
-    inputProduto.addEventListener('input', aplicarFiltros);
+  // 3. Filtro de Produto (input da sanfona)
+  if (filtrosAtivos.produto) {
+    const termo = filtrosAtivos.produto.toLowerCase();
+    empresasFiltradas = empresasFiltradas.filter(empresa =>
+      empresa.produtos && empresa.produtos.some(prod => prod.toLowerCase().includes(termo))
+    );
   }
 
-  // Listener para input de BUSCA GERAL (na navbar)
-  const inputBuscaGeral = document.querySelector('.search-bar');
-  if (inputBuscaGeral) {
-    // Usamos 'input' para filtrar a cada tecla digitada
-    inputBuscaGeral.addEventListener('input', aplicarFiltros);
+  // 4. Filtro Principal (input do navbar - busca por nome ou descrição)
+  if (filtrosAtivos.termoPrincipal) {
+    const termo = filtrosAtivos.termoPrincipal.toLowerCase();
+    empresasFiltradas = empresasFiltradas.filter(empresa =>
+      (empresa.nome && empresa.nome.toLowerCase().includes(termo)) ||
+      (empresa.descricao && empresa.descricao.toLowerCase().includes(termo))
+    );
   }
-}
 
-/**
- * Pega os valores selecionados em TODOS os filtros, filtra a lista 'todasEmpresas'
- * e chama renderizarEmpresas com o resultado.
- */
-function aplicarFiltros() {
-  // 1. Pega os estados selecionados (array de siglas, ex: ['SP', 'RJ'])
-  const estadosSelecionados = Array.from(document.querySelectorAll('.filtro-estado-check:checked')).map(chk => chk.value);
-
-  // 2. Pega as categorias selecionadas (array de NOMES, ex: ['Tecnologia', 'Agricultura'])
-  //    Usamos o nome porque é assim que está salvo no objeto empresa.
-  const categoriasSelecionadas = Array.from(document.querySelectorAll('.filtro-categoria-check:checked')).map(chk => chk.dataset.nome);
-
-  // 3. Pega o termo de busca de produto (string, lowercase)
-  const termoProduto = document.getElementById('filtro-produto-input')?.value.toLowerCase().trim() || '';
-
-  // 4. Pega o termo de busca geral da navbar (string, lowercase)
-  const inputBuscaGeral = document.querySelector('.search-bar');
-  const termoBuscaGeral = inputBuscaGeral ? inputBuscaGeral.value.toLowerCase().trim() : '';
-
-  // 5. Filtra a lista 'todasEmpresas'
-  const empresasFiltradas = todasEmpresas.filter(empresa => {
-    // --- Filtro de Estado ---
-    // A empresa passa se nenhum estado for selecionado OU se sua localização (string) contiver alguma das siglas selecionadas.
-    // ATENÇÃO: Isso assume que 'localizacao' contém a sigla do estado. Se for só cidade, precisa ajustar.
-    const passaEstado = estadosSelecionados.length === 0 || (
-      empresa.localizacao && estadosSelecionados.some(sigla =>
-        // Compara ignorando case e espaços extras
-        empresa.localizacao.toUpperCase().includes(sigla.toUpperCase())
-      )
-    );
-
-    // --- Filtro de Categoria ---
-    // A empresa passa se nenhuma categoria for selecionada OU se seu array 'categorias' contiver algum dos nomes selecionados.
-    const passaCategoria = categoriasSelecionadas.length === 0 || (
-      empresa.categorias && Array.isArray(empresa.categorias) && empresa.categorias.some(catEmpresa => // Garante que é array
-        categoriasSelecionadas.some(catSelecionada =>
-          catEmpresa.trim().toLowerCase() === catSelecionada.trim().toLowerCase() // Compara nomes (case-insensitive)
-        )
-      )
-    );
-
-    // --- Filtro de Produto ---
-    // A empresa passa se o termo estiver vazio OU se seu array 'produtos' contiver algum item que inclua o termo.
-    const passaProduto = termoProduto === '' || (
-      empresa.produtos && Array.isArray(empresa.produtos) && empresa.produtos.some(prod => // Garante que é array
-        prod.toLowerCase().includes(termoProduto)
-      )
-    );
-
-    // --- Filtro de Busca Geral (Nome, Descrição Curta/Ramo, Sobre) ---
-    // A empresa passa se o termo estiver vazio OU se o termo estiver contido em nome, descricao ou sobre.
-    const passaBuscaGeral = termoBuscaGeral === '' || (
-      (empresa.nome && empresa.nome.toLowerCase().includes(termoBuscaGeral)) ||
-      (empresa.descricao && empresa.descricao.toLowerCase().includes(termoBuscaGeral)) ||
-      (empresa.sobre && empresa.sobre.toLowerCase().includes(termoBuscaGeral))
-    );
-
-    // Retorna true apenas se passar em TODOS os filtros
-    return passaEstado && passaCategoria && passaProduto && passaBuscaGeral;
-  });
-
-  // 6. Re-renderiza o catálogo SOMENTE com as empresas filtradas
   renderizarEmpresas(empresasFiltradas);
+}
+
+/**
+ * Desenha os cartões das empresas na tela.
+ */
+function renderizarEmpresas(empresasParaRenderizar) {
+  const container = document.getElementById('catalogoEmpresas');
+  container.innerHTML = '';
+
+  if (empresasParaRenderizar.length === 0) {
+    container.innerHTML = `<p class="col-12 text-center text-muted mt-4">
+                            Nenhum fornecedor encontrado com os filtros selecionados.
+                           </p>`;
+    return;
+  }
+
+  empresasParaRenderizar.forEach(empresa => {
+    const descricaoCurta = (empresa.descricao || '').substring(0, 100);
+
+    const cartaoHTML = `
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="${empresa.imagem || '/img/IconeConta.png'}" class="card-img-top" alt="${empresa.nome}" style="height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${empresa.nome || 'Nome não informado'}</h5>
+            <p class="card-text text-muted flex-grow-1">${descricaoCurta}...</p>
+            <small class="text-muted mb-2">
+              <i class="bi bi-geo-alt-fill"></i> ${empresa.localizacao || 'Não informado'}
+            </small>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="empresa.html?id=${empresa.id}" class="btn btn-primary w-100">Ver Perfil</a>
+          </div>
+        </div>
+      </div>
+    `;
+    container.innerHTML += cartaoHTML;
+  });
+}
+
+
+/**
+ * Correção de layout da sanfona (do nosso chat anterior)
+ */
+function corrigirLayoutFiltroProduto() {
+  const accordionBody = document.querySelector('#collapseProdutos .accordion-body');
+  if (accordionBody) {
+    accordionBody.style.cssText = "padding: 0 !important;";
+    accordionBody.innerHTML = `<div style="padding: 1rem;">${accordionBody.innerHTML}</div>`;
+  }
 }
