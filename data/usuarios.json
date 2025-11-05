@@ -20,5 +20,20 @@
     "cpf": "65464654654",
     "telefone": "98798419516",
     "imagemPerfil": "/uploads/usuarios/65464654654/perfil.jpg"
+  },
+  {
+    "nome": "Ariã Monteiro",
+    "email": "arimont@gmail.com",
+    "senha": "123123123",
+    "cpf": "11111111111",
+    "telefone": "11911111111"
+  },
+  {
+    "nome": "Caio Ferrer",
+    "email": "caio1@gmail.com",
+    "senha": "123321",
+    "cpf": "56656565656",
+    "telefone": "77898798798",
+    "imagemPerfil": "/uploads/usuarios/56656565656/perfil.png"
   }
 ]

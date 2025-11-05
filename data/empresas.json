@@ -276,5 +276,43 @@
       "Infraestrutura",
       "Cloud"
     ]
+  },
+  {
+    "id": "13",
+    "nome": "Distribuidora Master teste",
+    "email": "vendas@distmaster.com.br",
+    "cnpj": "65.465.465/4654-65",
+    "senha": "12345678",
+    "descricao": "Empresa de distribuição",
+    "localizacao": "São Paulo",
+    "telefone": "(11) 9784-4845",
+    "sobre": "awfawgagsdadaf",
+    "produtos": [
+      "Papel A4",
+      "Toners e Cartuchos",
+      "Periféricos"
+    ],
+    "imagem": "/uploads/empresas/13/perfil.png",
+    "plano": "Premium",
+    "categorias": [
+      "Atacadista",
+      "Escritório",
+      "Informática"
+    ]
+  },
+  {
+    "id": "14",
+    "nome": "Teste",
+    "email": "teste@gmail.com",
+    "cnpj": "16.549.751/9843-23",
+    "senha": "54321",
+    "descricao": "",
+    "localizacao": "Bahia",
+    "telefone": "(11) 9516-5465",
+    "sobre": "",
+    "produtos": [],
+    "imagem": null,
+    "plano": "Premium",
+    "categorias": []
   }
 ]
